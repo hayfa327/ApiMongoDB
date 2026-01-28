@@ -1,0 +1,24 @@
+{
+  "name": "apimongodb",
+  "version": "1.0.0",
+  "description": "a tutorial for create Api with express.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayfa327/ApiMongoDB.git"
+  },
+  "author": "follow Shivani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hayfa327/ApiMongoDB/issues"
+  },
+  "homepage": "https://github.com/hayfa327/ApiMongoDB#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5"
+  }
+}
