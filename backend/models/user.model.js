@@ -1,5 +1,4 @@
-import { Timestamp } from "bson";
-import { kMaxLength } from "buffer";
+ 
 import mongoose, {Schema} from "mongoose";
 
 const userSchema = new Schema (
@@ -11,10 +10,10 @@ const userSchema = new Schema (
     lowercase: true, 
     trim: true,
     minlength: 1,
-    maxlength: 50
+    maxlength: 30
 },
 password: {
-  type: string, 
+  type: String, 
   required: true, 
   minlength: 6, 
   maxlength: 15, 
@@ -26,9 +25,13 @@ email: {
     unique:true, 
     lowercase: true, 
     trim: true,
-}, 
-Timestamps : true
+}
+  },
+  {
+  Timestamps : true
   }
+
+ 
 )
 
 
