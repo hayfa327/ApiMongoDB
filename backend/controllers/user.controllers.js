@@ -5,18 +5,18 @@ const registerUser = async (req , res) => {
  const {username, email, password} = req.body; 
  // basic validation 
  if (!username || !email || !password) {
-  return res.status(400).json({massage: "All fields are important!"})
+  return res.status(400).json({message: "All fields are important!"})
  }
- const existing = await User.findOne({email: email.tolowerCase()});
+ const existing = await User.findOne({email: email.toLowerCase()});
  if (existing) {
-  return res.status(400).json({massage: "user already exists!"})
+  return res.status(400).json({message: "user already exists!"})
  }
   
 
 const user = await User.create(
   {
     username, 
-    email: email.tolowerCase(), 
+    email: email.toLowerCase(), 
     password,
     loggedIn: false, 
   }
