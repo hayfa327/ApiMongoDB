@@ -1,3 +1,4 @@
+import { error } from "console";
 import {User} from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
@@ -79,9 +80,40 @@ const logoutUser = (req, res) => {
   });
 };
 
+const changePassword = async (req, res) => {
+  try {
+const userId = req.user.id; 
+const {oldPassword, newPassword} = req.body; 
+
+if (!oldPassword || !newPassword) {
+  return res.status(400).json({
+    message: "old and new password are required"
+  }); 
+}
+
+const user = await user.findById(userId); 
+if (!isMatch) {
+  return res.status(400).json({
+    message: "old password is incorrect", 
+  }); 
+}
+
+user.password = newPassword; 
+await user.save();  //works with bcrypt pre save hook
+
+res.status(200).json({message: "password changed successfully"}); 
+
+
+  }
+  catch (error) {
+res.status(500).json({message: "Internal Server Error", error: error.message});
+  }
+};
 
 export {
   registerUser,
   loginUser,
-  logoutUser
+  logoutUser,
+  changePassword 
+
 }
