@@ -26,10 +26,15 @@ email: {
     unique:true, 
     lowercase: true, 
     trim: true,
-}
+},
+role: {
+  type: String,
+  enum: ["visitor", "artist", "admin"],
+  default: "visitor"
+},
   },
   {
-  Timestamps : true
+  timestamps : true
   }
 
 )
