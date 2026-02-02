@@ -117,3 +117,6 @@ export {
   changePassword 
 
 }
+
+
+// for later we do forgotPassword and resetPassword functions
