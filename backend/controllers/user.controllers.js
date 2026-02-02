@@ -85,16 +85,16 @@ const changePassword = async (req, res) => {
 const userId = req.user.id; 
 const {oldPassword, newPassword} = req.body; 
 
-if (!oldPassword || !newPassword) {
-  return res.status(400).json({
-    message: "old and new password are required"
-  }); 
+
+const user = await User.findById(userId);
+
+if (!user) {
+  return res.status(404).json({message: "User not found"});
 }
 
-const user = await user.findById(userId); 
+const isMatch = await user.comparePassword(oldPassword);
 if (!isMatch) {
-  return res.status(400).json({
-    message: "old password is incorrect", 
+  return res.status(400).json({ message: "old password is incorrect", 
   }); 
 }
 
