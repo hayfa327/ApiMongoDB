@@ -19,12 +19,12 @@ const user = await User.create(
     username, 
     email: email.toLowerCase(), 
     password,
-    loggedIn: false, 
+     role: "visitor"
   }
 ); 
 
 res.status(201).json({message: "User registered successfully",
-   user: {id: user.id, email: user.email, username: user.username}
+   user: {id: user.id, email: user.email, username: user.username, role: user.role}
   });
  }
 
