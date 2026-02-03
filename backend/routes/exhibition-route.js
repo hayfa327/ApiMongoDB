@@ -1,5 +1,5 @@
 import express from 'express';
- import { createExibition } from '../controllers/exhibition.controller';
+ import { createExibition } from '../controllers/exhibition.controller.js';
  import { auth } from '../middleware/auth.js';
  import { isAdmin } from '../middleware/auth.js';
 

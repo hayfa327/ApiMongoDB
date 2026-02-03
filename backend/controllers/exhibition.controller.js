@@ -1,4 +1,4 @@
-import { Exhibition } from "../models/exhibition.model";
+import { Exhibition } from "../models/exhibition.model.js";
 import { User } from "../models/user.model.js";
 
 
