@@ -1,7 +1,7 @@
 {
   "name": "apiMongodb",
   "version": "1.0.0",
-  "description": "a tutorial for create Api with express.js",
+  "description": "create Api with express.js",
   "main": "backend/src/index.js",
   "type": "module",
   "scripts": {
