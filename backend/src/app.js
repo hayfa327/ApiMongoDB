@@ -20,6 +20,7 @@ app.use("/api/v1/users", userRouter);
 
 app.use("/api/v1/exhibitions", exhibitionRouter);
 
-// route: http://localhost:4000/api/v1/exhibitions/create
+// route: https://mesum-api.onrender.com/api/v1/exhibitions/create
+// route: https://mesum-api.onrender.com/api/v1/exhibitions/all
 
 export default app; 

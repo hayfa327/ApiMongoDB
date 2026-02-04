@@ -29,6 +29,24 @@ res.status(201).json({message: "Exhibition created successfully", exhibition});
 }
 
 
+
+const getAllExhibitions = async (req, res) => {
+  try {
+    const exhibitions = await Exhibition.find().populate("artist", "username email").sort({createdAt: -1});
+    res.status(200).json({exhibitions});
+
+  }
+  catch (error) {
+    res.status(500).json({message: "Error fetching exhibitions", error: error.message});
+  }
+}
+
+
+
+
+
+
 export {
-  createExibition
+  createExibition,
+  getAllExhibitions
 }
