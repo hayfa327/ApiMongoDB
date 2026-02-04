@@ -6,7 +6,10 @@
   title: {
     type: String,
     required: true, 
-  }, 
+    unique: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 100}, 
   description: {
     type: String,
     required: true,

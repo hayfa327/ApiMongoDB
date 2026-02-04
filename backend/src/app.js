@@ -12,12 +12,14 @@ import exhibitionRouter from "../routes/exhibition-route.js";
 app.use("/api/v1/users", userRouter); 
 
 
-//route: http://localhost:4000/api/v1/users/register
-// route: http://localhost:4000/api/v1/users/login
-// route: http://localhost:4000/api/v1/users/logout
-// route: http://localhost:4000/api/v1/users/change-password
+//route:  https://mesum-api.onrender.com/api/v1/users/register
+// route:  https://mesum-api.onrender.com/api/v1/users/login
+// route: https://mesum-api.onrender.com/api/v1/users/logout
+// route: https://mesum-api.onrender.com/api/v1/users/change-password
 
 
 app.use("/api/v1/exhibitions", exhibitionRouter);
+
+// route: http://localhost:4000/api/v1/exhibitions/create
 
 export default app; 
