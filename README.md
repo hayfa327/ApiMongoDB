@@ -28,6 +28,7 @@ artist	Can be assigned to exhibitions
 admin	Can create exhibitions
 
 For testing and evaluation, the teacher account is set as admin to create exhibitions and test protected routes.
+ADMIN { "username": "ilo", "email": "ilo@example.com", "password": "password123" }
 
 Authentication Routes
 Base path:
@@ -87,6 +88,4 @@ Usernames are not unique
 Validation errors return HTTP 400
 Duplicate key errors are handled correctly
 
-ADMIN { "username": "ilo", 
-"email": "ilo@example.com", 
-"password": "password123" }
+ 
