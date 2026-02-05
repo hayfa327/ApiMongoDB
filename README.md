@@ -44,34 +44,4 @@ Example testing flow Register a user Login to get JWT token Use admin account to
 About
 build Api with express.js and mongoDB for platfrom online as mesume for theater, exbitions , concerts .....
 
-Resources
- Readme
- Activity
-Stars
- 0 stars
-Watchers
- 0 watching
-Forks
- 0 forks
-Releases
-No releases published
-Create a new release
-Packages
-No packages published
-Publish your first package
-Languages
-JavaScript
-100.0%
-Suggested workflows
-Based on your tech stack
-Node.js logo
-Node.js
-Build and test a Node.js project with npm.
-Webpack logo
-Webpack
-Build a NodeJS project with npm and webpack.
-Datadog Synthetics logo
-Datadog Synthetics
-Run Datadog Synthetic tests within your GitHub Actions workflow
-More workflows
-Footer
+ 
