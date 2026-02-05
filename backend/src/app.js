@@ -22,6 +22,6 @@ app.use("/api/v1/exhibitions", exhibitionRouter);
 
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/create
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/all
-// test works fine
+ 
 
 export default app; 
