@@ -1,6 +1,7 @@
 import {useState} from "react"
 import { useNavigate } from "react-router-dom";
 import login from "../../assets/login.png"
+import {Link}  from "react-router-dom";
 import "./login.css"
 
  
@@ -74,7 +75,8 @@ export default function Login() {
       </form>
 
       <p>
-        Don't have an account? <span>Sign Up</span>
+        Don't have an account? ("")
+        <Link to="/register"> Sign Up </Link>
       </p>
     </section>
   );
