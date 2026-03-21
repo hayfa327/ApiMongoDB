@@ -1,20 +1,17 @@
 import express from "express"
-import cors from "cros";
+import cors from "cors";
 
 const app = express();
-
-
-
-//import routes
-import userRouter from "../routes/user-route.js";
-import exhibitionRouter from "../routes/exhibition-route.js";
-
-
 
 app.use(cors());
 app.use(express.json());
 
  
+
+//import routes
+import userRouter from "../routes/user-route.js";
+import exhibitionRouter from "../routes/exhibition-route.js";
+
 //route declaration
 app.use("/api/v1/users", userRouter); 
 
