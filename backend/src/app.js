@@ -1,10 +1,9 @@
-import cors from "cros";
-
 import express from "express"
+import cors from "cros";
 
 const app = express();
 
-app.use(express.json());
+
 
 //import routes
 import userRouter from "../routes/user-route.js";
@@ -13,6 +12,8 @@ import exhibitionRouter from "../routes/exhibition-route.js";
 
 
 app.use(cors());
+app.use(express.json());
+
  
 //route declaration
 app.use("/api/v1/users", userRouter); 
