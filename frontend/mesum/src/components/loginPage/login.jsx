@@ -75,7 +75,7 @@ export default function Login() {
       </form>
 
       <p>
-        Don't have an account? ("")
+        Don't have an account?
         <Link to="/register"> Sign Up </Link>
       </p>
     </section>
