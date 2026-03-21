@@ -1,10 +1,14 @@
 import {useState} from "react"
+import { useNavigate } from "react-router-dom";
 import login from "../../assets/login.png"
 import "./login.css"
 
  
 
 export default function Login() {
+
+
+  const navigate = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,12 +40,11 @@ export default function Login() {
       console.log("SUCCESS:", data);
  
       localStorage.setItem("token", data.token);
-
-      alert("Login successful ");
+      navigate("/home")
 
     } catch (error) {
       console.error(error);
-      alert("Something went wrong");
+       alert("Something went wrong");
     }
   };
 

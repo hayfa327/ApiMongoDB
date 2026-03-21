@@ -1,11 +1,21 @@
+import {BrowserRouter, Routes , Route} from "react-router-dom"
 import Login from "./components/login/login"
+import Home from "./components/HomePage/home/home"
+
 
 export default function App() {
+
+
+
   return (
-    <main>
-< Login />
-    </main>
-  )
+<BrowserRouter>
+<Routes>
+  <Route path="/" element={<Login />} />
+   <Route path="/home" element={<Home />} />
+
+</Routes>
+</BrowserRouter>
+  );
 }
 
 
