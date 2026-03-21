@@ -9,7 +9,16 @@ app.use(express.json());
 //import routes
 import userRouter from "../routes/user-route.js";
 import exhibitionRouter from "../routes/exhibition-route.js";
- 
+
+
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 //route declaration
 app.use("/api/v1/users", userRouter); 
 
@@ -27,6 +36,6 @@ app.use("/api/v1/exhibitions", exhibitionRouter);
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/artist/:artistId
 
 
-app.use(cors());
+ 
 
 export default app; 
