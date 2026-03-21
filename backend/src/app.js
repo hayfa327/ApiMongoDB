@@ -12,13 +12,8 @@ import exhibitionRouter from "../routes/exhibition-route.js";
 
 
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
-
+app.use(cors());
+ 
 //route declaration
 app.use("/api/v1/users", userRouter); 
 
