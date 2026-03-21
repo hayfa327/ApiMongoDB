@@ -1,3 +1,5 @@
+import cors from "cros";
+
 import express from "express"
 
 const app = express();
@@ -24,5 +26,7 @@ app.use("/api/v1/exhibitions", exhibitionRouter);
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/all
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/artist/:artistId
 
+
+app.use(cors());
 
 export default app; 
