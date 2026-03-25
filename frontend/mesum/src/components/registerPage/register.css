@@ -15,7 +15,7 @@ html, body, #root {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(72, 27, 233, 0.089);
+  background: rgba(83, 74, 134, 0.192);
 
   display: flex;
   align-items: center;
@@ -26,9 +26,9 @@ html, body, #root {
 .registerBox {
   width: 100%;
   max-width: 600px;
-  padding: 40px;
+  padding: 50px;
 
-  background: #b69cf31c;
+  background: #a07dff0e;
   border-radius: 10px;
 
   text-align: center;
@@ -38,11 +38,12 @@ html, body, #root {
 .registerBox h1 {
   font-size: 28px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .subtitle {
   font-size: 14px;
-  color: #666;
+  color: #3d3b3b;
   margin-bottom: 30px;
 }
 
@@ -53,7 +54,7 @@ html, body, #root {
 
 .inputGroup input {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #ddd;
 }
 
@@ -65,7 +66,7 @@ html, body, #root {
 .primaryBtn {
   display: block;
   width: 100%;
-  padding: 14px;
+  padding: 15px;
 
   text-align: center;
   text-decoration: none;
@@ -77,7 +78,7 @@ html, body, #root {
 
 .secondaryBtn {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #ccc;
   background: transparent;
   margin-top: 10px;

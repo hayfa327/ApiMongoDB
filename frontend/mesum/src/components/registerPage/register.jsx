@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-import registerImg from "../../assets/registerImg.jpeg"
+import registerimg from "../../assets/registerImg.jpeg"
 import {Link}  from "react-router-dom";
 import "./register.css"
 
@@ -50,7 +50,7 @@ export default function Register() {
   return (
   <section
   className="registerPage"
-  style={{ backgroundImage: `url(${registerImg})` }}
+  style={{ backgroundImage: `url(${registerimg})` }}
 >
   <div className="overlay">
     <div className="registerBox">
