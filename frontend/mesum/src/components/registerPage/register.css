@@ -131,6 +131,12 @@
   cursor: pointer;
 }
 
+ .primaryBtn:hover { background: #1717183b; 
+  font-weight: 600; 
+  color: #353535; 
+}
+
+
 .secondaryBtn {
   display: block;
   width: 100%;
@@ -143,6 +149,10 @@
   margin-top: 10px;
 }
 
+.secondaryBtn:hover { background: rgba(0, 0, 0, 0.068);
+   color: #353535; 
+   font-weight: 600; 
+  }
  
 .divider {
   display: flex;
