@@ -48,55 +48,80 @@ export default function Register() {
 
 
   return (
-  <section
-  className="registerPage"
-  style={{ backgroundImage: `url(${registerimg})` }}
->
-  <div className="overlay">
-    <div className="registerBox">
+ <section className="registerPage">
+ 
+  <div
+    className="registerImage"
+    style={{ backgroundImage: `url(${registerimg})` }}
+  >
+    <div className="imageOverlay">
+      <div className="imageText">
+        <h1>Enter the living stage</h1>
+        <p>
+          Access exclusive performances and contemporary art experiences.
+        </p>
+      </div>
+    </div>
+  </div>
 
+ 
+  <div className="registerContent">
+    <div className="registerBox">
+<Link to="/" className="backHome">
+  ← Back to Home
+</Link>
       <h1>Create Account</h1>
-      <p className="subtitle">Sign up to get started</p>
+      <p className="subtitle">Start your journey</p>
 
       <form onSubmit={handleRegister}>
+
         <div className="inputGroup">
+          <label>Username</label>
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Your name"
             value={username}
-            onChange={(registerValue) => setUsername(registerValue.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
         <div className="inputGroup">
+          <label>Email</label>
           <input
             type="email"
             placeholder="Email@example.com"
             value={email}
-            onChange={(registerValue) => setEmail(registerValue.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div className="inputGroup">
+          <label>Password</label>
           <input
             type="password"
-            placeholder="Password"
+            placeholder="••••••••"
             value={password}
-            onChange={(registerValue) => setPassword(registerValue.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <Link to="/" className="primaryBtn">
-          Sign Up
-        </Link>
+        <button type="submit" className="primaryBtn">
+          Create Account
+        </button>
 
         <div className="divider">
           <span>or</span>
         </div>
 
         <Link to="/" className="secondaryBtn">
-  Continue as guest
-</Link>
+          Continue as guest
+        </Link>
+
+        <p className="loginLink">
+          Already have an account?
+          <Link to="/login"> Log in</Link>
+        </p>
+
       </form>
     </div>
   </div>

@@ -14,6 +14,7 @@ export default function Login() {
   };
 
   return (
+  
     <section className="loginPage">
       
       
@@ -27,9 +28,12 @@ export default function Login() {
       </div>
       </div>
 
-      
+    
       <div className="loginContent">
         <div className="loginBox">
+          <Link to="/" className="backHome">
+  ←  Back to Home
+</Link>
           <h1>Welcome Back</h1>
           <p className="subtitle">Sign in to access your account</p>
 
@@ -49,7 +53,7 @@ export default function Login() {
               <label>Password</label>
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="••••••••"
                 value={password}
                 onChange={(loginValue) => setPassword(loginValue.target.value)}
               />
@@ -60,12 +64,6 @@ export default function Login() {
               Sign In
             </button>
           </form>
-
-<div className="links1" > 
-             <Link to="/changePassword" className="forgot">
-              Change Password !
-            </Link>
-</div>
 
 
 

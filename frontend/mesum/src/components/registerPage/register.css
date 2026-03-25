@@ -1,99 +1,155 @@
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  font-family: "Helvetica Neue", sans-serif;
-}
- 
 .registerPage {
-  height: 100vh;
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.registerImage {
+  flex: 1;
+  position: relative;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 
-.overlay {
+.imageOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(83, 74, 134, 0.192);
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
 
+.backHome {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.589);
+  text-decoration: none;
+
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+ 
+.backHome::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background:  rgba(63, 15, 236, 0.6);
+  transition: width 0.3s ease;
+}
+
+.backHome:hover::after {
+  width: 100%;
+}
+
+.backHome:hover {
+  color: #5555559c;
+}
+
+.imageText {
+  color: white;
+  max-width: 350px;
+}
+
+.imageText h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.imageText p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+
+
+.registerContent {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px;
+  background: white;
 }
-
 
 .registerBox {
   width: 100%;
-  max-width: 600px;
-  padding: 50px;
-
-  background: #a07dff0e;
-  border-radius: 10px;
-
-  text-align: center;
+  max-width: 420px;
 }
 
-
+ 
 .registerBox h1 {
   font-size: 28px;
-  margin-bottom: 10px;
   font-weight: 500;
 }
 
 .subtitle {
   font-size: 14px;
-  color: #3d3b3b;
+  color: #777;
   margin-bottom: 30px;
 }
 
-
+/* INPUT GROUP */
 .inputGroup {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #444;
 }
 
 .inputGroup input {
-  width: 100%;
-  padding: 15px;
+  padding: 12px;
   border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
 .inputGroup input:focus {
   outline: none;
-  border-color: #9b22ec;
+  border-color: rgb(118, 20, 230);
 }
+
 
 .primaryBtn {
-  display: block;
   width: 100%;
-  padding: 15px;
-
-  text-align: center;
-  text-decoration: none;
-
+  padding: 14px;
   background: black;
   color: white;
-}
-
-
-.secondaryBtn {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  background: transparent;
+  border: none;
   margin-top: 10px;
-   display: block;
-  text-align: center;
-  text-decoration: none;
   cursor: pointer;
 }
 
+.secondaryBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  background: transparent;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+}
+
+ 
 .divider {
   display: flex;
   align-items: center;
   margin: 20px 0;
   font-size: 12px;
-  color: #999;
+  color: #aaa;
 }
 
 .divider::before,
@@ -101,17 +157,43 @@ html, body, #root {
   content: "";
   flex: 1;
   height: 1px;
-  background: #dddddd;
+  background: #eee;
 }
 
 .divider span {
   margin: 0 10px;
 }
 
+ 
+.loginLink {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+}
 
+.loginLink a {
+  margin-left: 5px;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.loginLink a:hover {
+  font-weight: 600;
+  color: rgb(118, 20, 230) ;
+}
+
+ 
 @media (max-width: 768px) {
-  .registerBox {
-    margin: 20px;
-    padding: 25px;
+  .registerPage {
+    flex-direction: column;
+  }
+
+  .registerImage {
+    height: 250px;
+  }
+
+  .registerContent {
+    padding: 20px;
   }
 }

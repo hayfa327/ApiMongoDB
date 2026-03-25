@@ -9,7 +9,37 @@ body {
   height: 100%;
 }
 
+.backHome {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.589);
+  text-decoration: none;
+
+  position: relative;
+  transition: color 0.3s ease;
+}
+
  
+.backHome::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background:  rgba(63, 15, 236, 0.6);
+  transition: width 0.3s ease;
+}
+
+.backHome:hover::after {
+  width: 100%;
+}
+
+.backHome:hover {
+  color: #5555559c;
+}
 
 .loginPage {
   display: flex;
@@ -119,7 +149,7 @@ body {
 
 .inputGroup input:focus {
   outline: none;
-  border-color: #9b22ec;
+  border-color: rgb(118, 20, 230);
 }
 
  
@@ -165,7 +195,7 @@ body {
  
 .links {
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 10px;
   color: #666;
 
   display: flex;
@@ -173,17 +203,6 @@ body {
   
 }
 
-.links1 a {
-  color: rgba(12, 2, 46, 0.445);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.links1 a:hover {
-  color: rgba(98, 60, 158, 0.705);
-  font-weight: 600;
-}
- 
 
 .forgot {
   display: block;
@@ -191,7 +210,7 @@ body {
 }
 
 .accountLink link {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 400;
 }
  
@@ -203,7 +222,7 @@ body {
 }
 
 .accountLink p {
-  font-size: 19px;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 
