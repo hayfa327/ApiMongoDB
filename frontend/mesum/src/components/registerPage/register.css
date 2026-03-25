@@ -1,0 +1,116 @@
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+ 
+.registerPage {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(72, 27, 233, 0.089);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.registerBox {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+
+  background: #b69cf31c;
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+
+.registerBox h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+
+.inputGroup {
+  margin-bottom: 15px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #9b22ec;
+}
+
+.primaryBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+
+  text-align: center;
+  text-decoration: none;
+
+  background: black;
+  color: white;
+}
+
+
+.secondaryBtn {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  background: transparent;
+  margin-top: 10px;
+   display: block;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #dddddd;
+}
+
+.divider span {
+  margin: 0 10px;
+}
+
+
+@media (max-width: 768px) {
+  .registerBox {
+    margin: 20px;
+    padding: 25px;
+  }
+}

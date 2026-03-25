@@ -3,6 +3,7 @@ import Login from "./components/loginPage/login"
 import Register from "./components/registerPage/register"
 import ChangePassword from "./components/changePasswordPage/changePassword"
 import Home from "./components/HomePage/home"
+ 
 
 
 export default function App() {
@@ -12,10 +13,11 @@ export default function App() {
   return (
 <BrowserRouter>
 <Routes>
-  <Route path="/" element={<Login />} />
+  <Route path="/" element={<Home />} />
+  <Route path="/login" element={<Login />} />
   <Route path="/register"  element={< Register />} />
   <Route path="/changePassword" element={< ChangePassword />} />
-  <Route path="/home" element={<Home />} />
+   
 </Routes>
 </BrowserRouter>
   );
