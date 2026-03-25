@@ -16,7 +16,6 @@ export default function App() {
   <Route path="/register"  element={< Register />} />
   <Route path="/changePassword" element={< ChangePassword />} />
   <Route path="/home" element={<Home />} />
-
 </Routes>
 </BrowserRouter>
   );

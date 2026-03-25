@@ -1,87 +1,88 @@
 import {useState} from "react"
-import { useNavigate } from "react-router-dom";
-import login from "../../assets/login.png"
+import login from "../../assets/login.jpeg"
 import {Link}  from "react-router-dom";
 import "./login.css"
 
- 
 
 export default function Login() {
-
-
-  const navigate = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (loginFunction) => {
-    loginFunction.preventDefault();
-
-    try {
-      const response = await fetch(
-        "https://mesum-api.onrender.com/api/v1/users/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
-      console.log("SUCCESS:", data);
- 
-      localStorage.setItem("token", data.token);
-      navigate("/home")
-
-    } catch (error) {
-      console.error(error);
-       alert("Something went wrong");
-    }
+  const handleLogin = (login) => {
+    login.preventDefault();
+    console.log(email, password);
   };
 
   return (
-    <section className="loginPart">
-      <img src={login} alt="login visual" />
+    <section className="loginPage">
+      
+      
+      <div className="loginImage">
+        <img src={login} alt="gallery corridor" />
 
-      <h1>Welcome Back</h1>
-      <p>Log in to your account</p>
 
-      <form className="loginForm" onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email@example.com"
-          value={email}
-          onChange={(loginValue) => setEmail(loginValue.target.value)}
-        />
+  <div className="imageText">
+        <h1>Enter the living stage</h1>
+        <p>Access exclusive live performances, artist talks, and contemporary art experiences from around the world.</p>
+      </div>
+      </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(loginValue) => setPassword(loginValue.target.value)}
-        />
+      
+      <div className="loginContent">
+        <div className="loginBox">
+          <h1>Welcome Back</h1>
+          <p className="subtitle">Sign in to access your account</p>
 
-        <button type="submit">Log In</button>
-      </form>
+          <form className="loginForm" onSubmit={handleLogin}>
+            
+            <div className="inputGroup">
+              <label>Email address</label>
+              <input
+                type="email"
+                placeholder="Email@example.com"
+                value={email}
+                onChange={(loginValue) => setEmail(loginValue.target.value)}
+              />
+            </div>
 
-      <p>
-        Don't have an account?
-        <Link to="/register"> Sign Up </Link>
-      </p>
+            <div className="inputGroup">
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(loginValue) => setPassword(loginValue.target.value)}
+              />
+            </div>
 
-      <p>Change Password 
-         <Link to="/changePassword"> here</Link>
-      </p>
+ 
+            <button type="submit" className="primaryBtn">
+              Sign In
+            </button>
+          </form>
+
+<div className="links1" > 
+             <Link to="/changePassword" className="forgot">
+              Change Password !
+            </Link>
+</div>
+
+
+
+          <div className="links" >
+            <div className="divider">
+  <span>OR</span>
+</div> 
+            <div className="accountLink"> 
+            <p>Don't have an account?</p>
+              <Link to="/register" className="secondaryBtn">
+  Create an account
+</Link>
+</div>
+            
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
