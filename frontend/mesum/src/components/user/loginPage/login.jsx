@@ -1,5 +1,5 @@
 import {useState} from "react"
-import login from "../../assets/login.jpeg"
+import login from "../../../assets/login.jpeg"
 import {Link}  from "react-router-dom";
 import "./login.css"
 

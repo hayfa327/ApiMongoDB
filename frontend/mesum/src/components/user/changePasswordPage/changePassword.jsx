@@ -1,5 +1,5 @@
 import { useState } from "react";
-import changeImg from "../../assets/changeImg.png"
+import changeImg from "../../../assets/changeImg.png"
 import {Link}  from "react-router-dom";
 import "./changePassword.css"
 
@@ -45,8 +45,7 @@ export default function ChangePassword() {
 
   return (
     <section className="authSplit">
-
-  {/* LEFT - FORM */}
+ 
   <div className="authLeft">
     <div className="authCard">
      <Link to="/" className="backHome">
@@ -63,7 +62,7 @@ export default function ChangePassword() {
             type="password"
             placeholder="Enter current password"
             value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
+            onChange={(changeValue) => setOldPassword(changeValue.target.value)}
           />
         </div>
 
@@ -73,7 +72,7 @@ export default function ChangePassword() {
             type="password"
             placeholder="Enter new password"
             value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={(changeValue) => setNewPassword(changeValue.target.value)}
           />
         </div>
 
@@ -85,8 +84,7 @@ export default function ChangePassword() {
 
     </div>
   </div>
-
-  {/* RIGHT - IMAGE */}
+ 
   <div
     className="authRight"
     style={{ backgroundImage: `url(${changeImg})` }}

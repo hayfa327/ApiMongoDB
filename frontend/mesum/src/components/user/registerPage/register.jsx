@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-import registerimg from "../../assets/registerImg.jpeg"
+import registerimg from "../../../assets/registerImg.jpeg"
 import {Link}  from "react-router-dom";
 import "./register.css"
 

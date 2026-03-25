@@ -1,7 +1,8 @@
 import {BrowserRouter, Routes , Route} from "react-router-dom"
-import Login from "./components/loginPage/login"
-import Register from "./components/registerPage/register"
-import ChangePassword from "./components/changePasswordPage/changePassword"
+import Login from "./components/user/loginPage/login"
+import Register from "./components/user/registerPage/register"
+import ChangePassword from "./components/user/changePasswordPage/changePassword"
+import AuthMenu from "./components/user/MangeAccount/mangeAccount"
 import Home from "./components/HomePage/home"
  
 
@@ -17,7 +18,8 @@ export default function App() {
   <Route path="/login" element={<Login />} />
   <Route path="/register"  element={< Register />} />
   <Route path="/changePassword" element={< ChangePassword />} />
-   
+  <Route path="/manageAccount" element={< AuthMenu />} />
+  
 </Routes>
 </BrowserRouter>
   );

@@ -1,0 +1,96 @@
+ 
+
+.menuPage {
+  min-height: 100vh;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+ 
+
+.menuContent {
+  text-align: center;
+  width: 100%;
+  max-width: 550px;
+}
+
+ 
+.menuContent h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+ 
+.menuContent p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+ 
+
+.menuButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+ 
+.primaryBtn,
+.secondaryBtn {
+  flex: 1;  
+
+  padding: 12px;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+ 
+.primaryBtn {
+  background: #02021a;
+  color: white;
+   
+}
+
+ 
+.secondaryBtn {
+  color: black;
+}
+
+ 
+
+@media (max-width: 768px) {
+
+  .menuContent h1 {
+    font-size: 24px;
+  }
+
+  .menuContent p {
+    font-size: 14px;
+  }
+
+  .menuButtons {
+    flex-direction: column;  
+    gap: 15px;
+    align-items: center;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 50%;
+
+  }
+}
