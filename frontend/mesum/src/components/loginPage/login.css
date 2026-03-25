@@ -107,7 +107,7 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   padding: 40px;
-  background: white;
+  background: rgb(255, 255, 255);
 }
 
 .loginBox {
@@ -150,7 +150,7 @@ html, body, #root {
 
 .inputGroup input:focus {
   outline: none;
-  border-color: black;
+  border-color: rgba(80, 18, 161, 0.678);
 }
 
  
@@ -184,9 +184,9 @@ html, body, #root {
   transition: 0.3s;
 }
 
-  .primaryBtn:hover { background: #1717183b; 
+  .primaryBtn:hover { background: #33333342; 
   font-weight: 600; 
-  color: #353535; 
+  color: black; 
 }
 
 

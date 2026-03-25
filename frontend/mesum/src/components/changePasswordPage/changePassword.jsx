@@ -1,4 +1,7 @@
 import { useState } from "react";
+import changeImg from "../../assets/changeImg.png"
+import {Link}  from "react-router-dom";
+import "./changePassword.css"
 
 export default function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -41,26 +44,62 @@ export default function ChangePassword() {
   };
 
   return (
-    <section>
+    <section className="authSplit">
+
+  {/* LEFT - FORM */}
+  <div className="authLeft">
+    <div className="authCard">
+     <Link to="/" className="backHome">
+  ←  Back to Home
+</Link>
       <h1>Change Password</h1>
+      <p className="subtitle">Update your password securely</p>
 
       <form onSubmit={handleChangePassword}>
-        <input
-          type="password"
-          placeholder="Old Password"
-          value={oldPassword}
-          onChange={(changePasswordValue) => setOldPassword(changePasswordValue.target.value)}
-        />
 
-        <input
-          type="password"
-          placeholder="New Password"
-          value={newPassword}
-          onChange={(changePasswordValue) => setNewPassword(changePasswordValue.target.value)}
-        />
+        <div className="inputGroup">
+          <label>Old Password</label>
+          <input
+            type="password"
+            placeholder="Enter current password"
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
+          />
+        </div>
 
-        <button type="submit">Change Password</button>
+        <div className="inputGroup">
+          <label>New Password</label>
+          <input
+            type="password"
+            placeholder="Enter new password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" className="primaryBtn">
+          Update Password
+        </button>
+
       </form>
-    </section>
-  );
+
+    </div>
+  </div>
+
+  {/* RIGHT - IMAGE */}
+  <div
+    className="authRight"
+    style={{ backgroundImage: `url(${changeImg})` }}
+  >
+    <div className="imageOverlay">
+      <div className="imageText">
+        <h1>Secure your account</h1>
+        <p>Keep your access protected and safe.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+  )
+      
 }

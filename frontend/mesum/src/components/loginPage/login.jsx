@@ -76,6 +76,7 @@ export default function Login() {
               <Link to="/register" className="secondaryBtn">
   Create an account
 </Link>
+        
 </div>
             
           </div>
