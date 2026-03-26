@@ -1,11 +1,13 @@
 import { useState } from "react";
 import changeImg from "../../../assets/changeImg.png"
-import {Link}  from "react-router-dom";
+import {Link , useNavigate}  from "react-router-dom";
 import "./changePassword.css"
 
 export default function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChangePassword = async (changePass) => {
     changePass.preventDefault();
@@ -36,6 +38,8 @@ export default function ChangePassword() {
       }
 
       alert("Password changed successfully");
+
+      navigate("/");
 
     } catch (error) {
       console.error(error);

@@ -1,13 +1,13 @@
 import {useState} from "react"
 import login from "../../../assets/login.jpeg"
-import {Link }  from "react-router-dom";
+import {Link, useNavigate }  from "react-router-dom";
 import "./login.css"
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
+  const navigate = useNavigate();
 
   const handleLogin = async (login) => {
     login.preventDefault();
@@ -39,6 +39,8 @@ export default function Login() {
     
 
     alert("Login successful");
+
+    navigate("/");
 
   } catch (error) {
     console.error(error);
