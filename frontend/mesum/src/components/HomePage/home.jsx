@@ -1,3 +1,12 @@
+import Hero from "./heroSection/heroSection"
+
+
 export default function Home() {
-  return <h1>Welcome to the Museum 🎭</h1>;
+   
+ 
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }

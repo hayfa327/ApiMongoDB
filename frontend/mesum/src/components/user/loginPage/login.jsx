@@ -1,17 +1,53 @@
 import {useState} from "react"
 import login from "../../../assets/login.jpeg"
-import {Link}  from "react-router-dom";
+import {Link }  from "react-router-dom";
 import "./login.css"
-
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (login) => {
+  
+
+  const handleLogin = async (login) => {
     login.preventDefault();
-    console.log(email, password);
+
+  try {
+    const response = await fetch(
+      " https://mesum-api.onrender.com/api/v1/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message);
+      return;
+    }
+
+     localStorage.setItem("token", data.token);
+    console.log("TOKEN:", data.token);  
+    
+
+    alert("Login successful");
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+ 
   };
+
+
 
   return (
   
@@ -84,4 +120,4 @@ export default function Login() {
       </div>
     </section>
   );
-}
+  };

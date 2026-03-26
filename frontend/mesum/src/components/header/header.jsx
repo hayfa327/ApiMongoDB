@@ -8,22 +8,21 @@ export default function Header() {
   return (
     <header className="header">
 
-      {/* LEFT */}
+    
       <div className="logo">
         <span className="dot"></span>
         WOMEN IN CONTEMPORARY ART
       </div>
 
-      {/* CENTER */}
+     
       <nav className="nav">
   <Link to="/" className="active">Live</Link>
   <Link to="/performances">Performances</Link>
   <Link to="/exhibitions">Exhibitions</Link>
   <Link to="/artists">Artists</Link>
-  <Link to="/voices">Voices</Link>
 </nav>
 
-      {/* RIGHT */}
+     
       <div className="rightSide">
 
         <div className="userMenu">
@@ -35,11 +34,24 @@ export default function Header() {
           </button>
 
           {open && (
-            <div className="dropdown">
-              <Link to="/login">Login</Link>
-              <Link to="/manageAccount">Manage Account</Link>
-              <Link to="/logout">Logout</Link>
-            </div>
+          <div className="dropdown">
+  <Link to="/login" onClick={() => setOpen(false)}>
+    Login
+  </Link>
+
+  <Link to="/manageAccount" onClick={() => setOpen(false)}>
+    Manage Account
+  </Link>
+
+  <button
+    onClick={() => {
+      localStorage.removeItem("token");
+      setOpen(false);
+    }}
+  >
+    Logout
+  </button>
+</div>
           )}
         </div>
 
