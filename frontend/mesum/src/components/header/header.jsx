@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import "./header.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
     const username = localStorage.getItem("username");
 
+const navigate = useNavigate();
+
      const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
 
     setOpen(false);
+     navigate("/"); 
     window.location.reload(); // simple update
   };
 
