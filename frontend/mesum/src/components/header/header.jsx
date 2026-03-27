@@ -4,6 +4,15 @@ import "./header.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+    const username = localStorage.getItem("username");
+
+     const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+
+    setOpen(false);
+    window.location.reload(); // simple update
+  };
 
   return (
     <header className="header">
@@ -20,48 +29,52 @@ export default function Header() {
   <Link to="/performances">Performances</Link>
   <Link to="/exhibitions">Exhibitions</Link>
   <Link to="/artists">Artists</Link>
+  
 </nav>
 
      
-      <div className="rightSide">
+         <div className="rightSide">
 
         <div className="userMenu">
-          <button
-            onClick={() => setOpen(!open)}
-            className="signInBtn"
-          >
-            👤 Sign in
+          <button onClick={() => setOpen(!open)} className="signInBtn">
+            {username ? `👤 ${username}` : "Sign in"} ▼
           </button>
 
           {open && (
-          <div className="dropdown">
-  <Link to="/login" onClick={() => setOpen(false)}>
-    Login
-  </Link>
+            <div className="dropdown">
 
-  <Link to="/manageAccount" onClick={() => setOpen(false)}>
-    Manage Account
-  </Link>
+            
+              {!username && (
+                <>
+                  <Link to="/login" onClick={() => setOpen(false)}>
+                    Login
+                  </Link>
 
-  <button
-    onClick={() => {
-      localStorage.removeItem("token");
-      setOpen(false);
-    }}
-  >
-    Logout
-  </button>
-</div>
+                  <Link to="/register" onClick={() => setOpen(false)}>
+                    Create Account
+                  </Link>
+                </>
+              )}
+
+           
+              {username && (
+                <>
+                  <Link to="/manageAccount" onClick={() => setOpen(false)}>
+                    Manage Account
+                  </Link>
+
+                  <button onClick={handleLogout}>
+                    Logout
+                  </button>
+                </>
+              )}
+
+            </div>
           )}
-        </div>
-
-        <div className="location">
-          <span className="dot purple"></span>
-          STOCKHOLM
         </div>
 
       </div>
 
     </header>
   );
-}
+}   

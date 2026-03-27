@@ -10,8 +10,8 @@ export default function AuthMenu() {
         <p>Museum Account Management</p>
 
         <div className="menuButtons">
-          <Link to="/register" className="primaryBtn">
-            Create Account
+          <Link to="" className="primaryBtn">
+            Update Payment
           </Link>
 
           <Link to="/changePassword" className="secondaryBtn">
