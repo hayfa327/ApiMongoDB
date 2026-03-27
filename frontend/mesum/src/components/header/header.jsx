@@ -75,7 +75,10 @@ const navigate = useNavigate();
             </div>
           )}
         </div>
-
+ <div className="location">
+    <span className="dot purple"></span>
+    STOCKHOLM
+  </div>
       </div>
 
     </header>

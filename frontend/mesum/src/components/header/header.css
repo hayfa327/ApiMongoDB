@@ -85,7 +85,7 @@
   background: white;
   border: 1px solid #eee;
   border-radius: 6px;
-
+ text-decoration: none;
   display: flex;
   flex-direction: column;
   min-width: 160px;
@@ -116,8 +116,4 @@
 }
 
 
-@media (max-width: 900px) {
-  .nav {
-    display: none;
-  }
-}
+ 

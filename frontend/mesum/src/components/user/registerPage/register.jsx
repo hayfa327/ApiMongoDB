@@ -38,7 +38,7 @@ export default function Register() {
         return;
       }
 
-      alert("User registered successfully");
+      alert("User registered successfully, Continue With Login");
       navigateRegister("/login");
     } catch (error) {
       console.error(error);

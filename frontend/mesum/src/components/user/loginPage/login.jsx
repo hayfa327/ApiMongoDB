@@ -38,7 +38,7 @@ export default function Login() {
      localStorage.setItem("username", data.user.username);
     
 
-    alert("Login successful");
+   
 
     navigate("/");
 
