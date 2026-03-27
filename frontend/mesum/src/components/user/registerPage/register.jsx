@@ -39,7 +39,7 @@ export default function Register() {
       }
 
       alert("User registered successfully");
-      navigateRegister("/");
+      navigateRegister("/login");
     } catch (error) {
       console.error(error);
       alert("Server error");
@@ -81,7 +81,7 @@ export default function Register() {
             type="text"
             placeholder="Your name"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(registerValue) => setUsername(registerValue.target.value)}
           />
         </div>
 
@@ -91,7 +91,7 @@ export default function Register() {
             type="email"
             placeholder="Email@example.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(registerValue) => setEmail(registerValue.target.value)}
           />
         </div>
 
@@ -101,7 +101,7 @@ export default function Register() {
             type="password"
             placeholder="••••••••"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(registerValue) => setPassword(registerValue.target.value)}
           />
         </div>
 
@@ -110,7 +110,7 @@ export default function Register() {
         </button>
 
         <div className="divider">
-          <span>or</span>
+          <span>OR</span>
         </div>
 
         <Link to="/" className="secondaryBtn">

@@ -37,7 +37,7 @@ export default function Header() {
 
         <div className="userMenu">
           <button onClick={() => setOpen(!open)} className="signInBtn">
-            {username ? `👤 ${username}` : "Sign in"} ▼
+            {username ? `👤 ${username}` : " 👤 Sign in"} 
           </button>
 
           {open && (

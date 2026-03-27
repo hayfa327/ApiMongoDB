@@ -36,7 +36,7 @@ export default function Login() {
 
      localStorage.setItem("token", data.token);
      localStorage.setItem("username", data.user.username);
-   
+    
 
     alert("Login successful");
 

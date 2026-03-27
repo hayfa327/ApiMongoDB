@@ -1,0 +1,11 @@
+.progress {
+
+  color: blue;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.progress:hover {
+  color: rgba(0, 0, 255, 0.288);
+}

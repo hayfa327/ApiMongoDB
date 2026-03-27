@@ -5,6 +5,7 @@ import ChangePassword from "./components/user/changePasswordPage/changePassword"
 import AuthMenu from "./components/user/MangeAccount/mangeAccount"
 import Home from "./components/HomePage/home"
 import Header from "./components/header/header"
+import Update from "./components/user/payment/updatePayment"
  
 
 
@@ -26,6 +27,7 @@ export default function App() {
   <Route path="/login" element={<Login />} />
   <Route path="/register"  element={< Register />} />
   <Route path="/changePassword" element={< ChangePassword />} />
+    <Route path="/upadatPayment" element={< Update />} />
   <Route path="/manageAccount" element={< AuthMenu />} />
   
 </Routes>
