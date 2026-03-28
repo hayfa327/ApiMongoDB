@@ -45,7 +45,7 @@
 .primaryBtn,
 .secondaryBtn {
   flex: 1;  
-max-width: 50%;
+max-width: 100%;
   padding: 14px;
   font-size: 15px;
 
