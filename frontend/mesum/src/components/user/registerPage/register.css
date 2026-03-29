@@ -82,7 +82,7 @@
 .registerBox {
   width: 100%;
   max-width: 420px;
-  border: 1px solid rgba(192, 192, 192, 0.205);
+    
   padding: 20px;
 }
 
