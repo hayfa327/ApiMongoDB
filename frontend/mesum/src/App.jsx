@@ -6,6 +6,7 @@ import AuthMenu from "./components/user/MangeAccount/mangeAccount"
 import Home from "./components/HomePage/home"
 import Header from "./components/header/header"
 import Update from "./components/user/updatePaymentPage/updatePayment"
+import HomeExhibition from "./components/HomePage/exhibitions/exhibitions"
  
 
 
@@ -20,9 +21,9 @@ export default function App() {
 <Routes>
   <Route path="/" element={<Home />} />
 <Route path="/performances" element={<div>Performances</div>} />
-<Route path="/exhibitions" element={<div>Exhibitions</div>} />
+<Route path="/HomeExhibition" element={<div>Exhibitions</div>} />
 <Route path="/collection" element={<div>Collection</div>} />
-<Route path="/artists" element={<div>Artists</div>} />
+ 
  
   <Route path="/login" element={<Login />} />
   <Route path="/register"  element={< Register />} />

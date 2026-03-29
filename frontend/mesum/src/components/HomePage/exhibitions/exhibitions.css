@@ -1,0 +1,38 @@
+.homeExhibitions {
+  padding: 80px 60px;
+  background: #f9f9f9;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.card {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.cardImg {
+  height: 220px;
+  background: #ddd; /* placeholder for now */
+}
+
+.cardContent {
+  padding: 15px 0;
+}
+
+.artist {
+  font-size: 12px;
+  color: gray;
+}
+
+.date {
+  font-size: 12px;
+  color: #999;
+}
