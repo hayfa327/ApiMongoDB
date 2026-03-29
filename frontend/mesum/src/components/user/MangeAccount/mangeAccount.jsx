@@ -13,26 +13,26 @@ export default function AuthMenu() {
      
       {role === "visitor" && (
         <div className="actions">
-           <Link to="/upadatPayment" className="primaryBtn" >Update Payment</Link>
-          <Link to="/changePassword" className="primaryBtn">Change Password</Link>
+           <Link to="/upadatPayment" className="primaryBtn1" >Update Payment</Link>
+          <Link to="/changePassword" className="primaryBtn2">Change Password</Link>
         </div>
       )}
 
       
       {role === "artist" && (
         <div className="actions">
-          <Link to="/ArtsitArtwork" className="primaryBtn" >Edit Artwork</Link >
-         <Link to="/upadatPayment" className="primaryBtn" >Update Payment</Link>
-          <Link to="/changePassword" className="primaryBtn" >Change Password</Link>
+          <Link to="/ArtsitArtwork" className="primaryBtn1" >Edit Artwork</Link >
+         <Link to="/upadatPayment" className="primaryBtn2" >Update Payment</Link>
+          <Link to="/changePassword" className="primaryBtn2" >Change Password</Link>
         </div>
       )}
 
        {role === "admin" && (
         <div className="actions">
-           <Link to="/changePassword" className="primaryBtn" >Change Password</Link>
-          <Link to="/createExibitions" className="primaryBtn" > Create Exhibition</Link>
-          <Link to="/createTheater" className="primaryBtn" > Create Theater</Link>
-           <Link to="/createConcert" className="primaryBtn" > Create Concert</Link>
+           <Link to="/changePassword" className="primaryBtn1" >Change Password</Link>
+          <Link to="/createExibitions" className="primaryBtn2" > Create Exhibition</Link>
+          <Link to="/createTheater" className="primaryBtn2" > Create Theater</Link>
+           <Link to="/createConcert" className="primaryBtn2" > Create Concert</Link>
            
         </div>
       )}
