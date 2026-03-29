@@ -262,7 +262,16 @@ html, body, #root {
   margin-bottom: 10px;
 }
 
- 
+ .errorMsg {
+  color: #fa0606;
+  font-size: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+  border : 1px solid #fa060627;
+  padding: 9px;
+  background-color: #f0f0f0e7;
+ text-align: center;
+}
 
 @media (max-width: 768px) {
   .loginPage {

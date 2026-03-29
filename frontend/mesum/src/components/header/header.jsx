@@ -32,7 +32,7 @@ const navigate = useNavigate();
   <Link to="/" className="active">Live</Link>
   <Link to="/performances">Performances</Link>
   <Link to="/exhibitions">Exhibitions</Link>
-  <Link to="/artists">Artists</Link>
+  <Link to="/collection">Collections</Link>
   
 </nav>
 

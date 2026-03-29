@@ -6,15 +6,27 @@ import "./login.css"
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const isDisabled = !email || !password;
+  const [error, setError] = useState("");
+const [loading, setLoading] = useState(false);
+ 
+ 
   const navigate = useNavigate();
 
   const handleLogin = async (login) => {
     login.preventDefault();
+      
+  setError(""); // reset error
+
+  if (!email || !password) {
+    setError("Please fill all fields");
+    return;
+  }
+
+    setLoading(true);
 
   try {
     const response = await fetch(
-      " https://mesum-api.onrender.com/api/v1/users/login",
+      "https://mesum-api.onrender.com/api/v1/users/login",
       {
         method: "POST",
         headers: {
@@ -30,7 +42,8 @@ const isDisabled = !email || !password;
     const data = await response.json();
 
     if (!response.ok) {
-      alert(data.message);
+       setError(data.message || "Login failed");
+       setLoading(false);
       return;
     }
 
@@ -40,14 +53,14 @@ const isDisabled = !email || !password;
 
     navigate("/");
 
-  } catch (error) {
-    console.error(error);
-    alert("Server error");
+setLoading(false);
+    } catch (error) {
+      console.error(error)
+    setError("Something went wrong");
+    setLoading(false);
   }
  
   };
-
-
 
   return (
   
@@ -74,6 +87,8 @@ const isDisabled = !email || !password;
           <Link to="/" className="backHome">
   ←  Back to Home
 </Link>
+
+ {error && <p className="errorMsg">{error}</p>}
           <h1>Welcome Back</h1>
           <p className="subtitle">Sign in to access your account</p>
 
@@ -100,8 +115,9 @@ const isDisabled = !email || !password;
             </div>
 
  
-            <button type="submit" className="primaryBtn"  disabled={isDisabled} >
-              Sign In
+            <button type="submit" className="primaryBtn"     disabled={!email || !password || loading}
+>
+  {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
@@ -118,10 +134,12 @@ const isDisabled = !email || !password;
 </Link>
         
 </div>
+ 
             
           </div>
         </div>
       </div>
+       
     </section>
   );
   };

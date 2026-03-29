@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
-import registerimg from "../../../assets/registerImg.jpeg"
+import   changgeImg from "../../../assets/changeImg.png"
 import {Link}  from "react-router-dom";
 import "./register.css"
 
@@ -11,10 +11,21 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+const [loading, setLoading] = useState(false);
   const isDisabled = !email || !password;
 
   const handleRegister = async (register) => {
     register.preventDefault();
+
+ setError("");
+
+  if (!username || !email || !password) {
+    setError("Please fill all fields");
+    return;
+  }
+
+  setLoading(true);
 
     try {
       const response = await fetch(
@@ -33,18 +44,23 @@ export default function Register() {
       );
 
       const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
-      alert("User registered successfully, Continue With Login");
-      navigateRegister("/login");
-    } catch (error) {
-      console.error(error);
-      alert("Server error");
+ if (!response.ok) {
+      setError(data.message || "Registration failed");
+      setLoading(false);
+      return;
     }
+
+    setLoading(false);
+    navigateRegister("/login");
+
+  } catch (error) {
+    console.error(error);
+    setError("Server error");
+    setLoading(false);
+  }
+      
+
+    
   };
 
 
@@ -53,7 +69,7 @@ export default function Register() {
  
   <div
     className="registerImage"
-    style={{ backgroundImage: `url(${registerimg})` }}
+    style={{ backgroundImage: `url(${ changgeImg})` }}
   >
     <div className="imageOverlay">
       <div className="imageText">
@@ -68,11 +84,14 @@ export default function Register() {
  
   <div className="registerContent">
     <div className="registerBox">
+       
 <Link to="/" className="backHome">
   ← Back to Home
 </Link>
+   {error && <p className="errorMsg">{error}</p>}
       <h1>Create Account</h1>
       <p className="subtitle">Start your journey</p>
+      
 
       <form onSubmit={handleRegister}>
 
@@ -106,8 +125,8 @@ export default function Register() {
           />
         </div>
 
-        <button type="submit" className="primaryBtn" disabled={isDisabled}  >
-          Create Account
+        <button type="submit" className="primaryBtn"  disabled={isDisabled || loading}>
+  {loading ? "Creating..." : "Create Account"}
         </button>
 
         <div className="divider">
@@ -124,7 +143,9 @@ export default function Register() {
         </p>
 
       </form>
+      
     </div>
+     
   </div>
 </section>
   )
