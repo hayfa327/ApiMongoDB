@@ -33,14 +33,15 @@
   display: flex;
   flex-wrap: wrap;  
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
   max-width: 500px;
+  font-weight: 530;
 }
 
  
 .actions a {
   width: 220px;
-  padding: 12px 0;
+  padding: 14px 0;
 
   display: flex;
   align-items: center;
@@ -51,7 +52,7 @@
   cursor: pointer;
 
   border: 1px solid #8a8a8aa9;
- 
+  
  
 
   transition: 0.3s ease;
@@ -74,14 +75,14 @@
 
 .primaryBtn1:hover {
   color: black;
-  background: rgba(184, 184, 184, 0.76);
-  font-size: 15px;
+  background: rgba(184, 184, 184, 0.329);
+  font-size: 16px;
 }
 
 .primaryBtn2:hover {
-  background:  rgba(184, 184, 184, 0.76);
+  background:   rgba(184, 184, 184, 0.329);
   color: black;
-   font-size: 15px;
+   font-size: 16px;
 }
 
  
@@ -93,7 +94,7 @@
   }
 
   .actions {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 

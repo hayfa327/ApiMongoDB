@@ -40,27 +40,29 @@ const navigate = useNavigate();
          <div className="rightSide">
 
         <div className="userMenu">
-          <button onClick={() => setOpen(!open)} className="signInBtn">
+          <button className="signInBtn"
+           onClick={() => setOpen(!open)}
+          >
             {username ? `👤 ${username}` : " 👤 Sign in"} 
           </button>
-{open && (
+ {open && (
   <div className="dropdown">
 
     {!username && (
       <>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Create Account</Link>
+        <Link to="/login" onClick={() => setOpen(false)} >Login</Link>
+        <Link to="/register"  onClick={() => setOpen(false)} >Create Account</Link>
       </>
     )}
 
     {username && (
       <>
-        <Link to="/manageAccount">Manage Account</Link>
+        <Link to="/manageAccount" onClick={() => setOpen(false)} >Manage Account</Link>
 
       
         {role === "admin" && (
          
-          <Link to="/admin">Admin Dashboard</Link>
+          <Link to="/admin" onClick={() => setOpen(false)}  >Admin Dashboard</Link>
       
          
         )}
@@ -68,7 +70,7 @@ const navigate = useNavigate();
        
         {role === "artist" && (
        
-          <Link to="/myArt">My Art</Link>
+          <Link to="/myArt" onClick={() => setOpen(false)}  >My Art</Link>
         
         )}
 
@@ -77,8 +79,7 @@ const navigate = useNavigate();
     )}
 
   </div>
- )}
-    
+ )}  
   </div>      
  <div className="location">
     <span className="dot purple"></span>
