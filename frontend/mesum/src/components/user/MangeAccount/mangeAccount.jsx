@@ -6,32 +6,34 @@ export default function AuthMenu() {
 
   return (
     <section className="managePage">
-      <h1>Manage Account</h1>
-
+      <div className="manageContent"> 
+      <h1>Living Art Platform</h1>
+      <p>Museum Account Management</p>
+  </div>
      
       {role === "visitor" && (
         <div className="actions">
-           <Link to="/upadatPayment">Update Payment</Link>
-          <Link to="/changePassword">Change Password</Link>
+           <Link to="/upadatPayment" className="primaryBtn" >Update Payment</Link>
+          <Link to="/changePassword" className="primaryBtn">Change Password</Link>
         </div>
       )}
 
       
       {role === "artist" && (
         <div className="actions">
-          <button>Edit Artwork</button>
-         <Link to="/upadatPayment">Update Payment</Link>
-          <Link to="/changePassword">Change Password</Link>
+          <Link to="/ArtsitArtwork" className="primaryBtn" >Edit Artwork</Link >
+         <Link to="/upadatPayment" className="primaryBtn" >Update Payment</Link>
+          <Link to="/changePassword" className="primaryBtn" >Change Password</Link>
         </div>
       )}
 
        {role === "admin" && (
         <div className="actions">
-           <Link to="/changePassword">Change Password</Link>
-          <button>Create Exhibition</button>
-          <button>Create Theater</button>
-          <button>Create Concert</button>
-          <button>Add Artist</button>
+           <Link to="/changePassword" className="primaryBtn" >Change Password</Link>
+          <Link to="/createExibitions" className="primaryBtn" > Create Exhibition</Link>
+          <Link to="/createTheater" className="primaryBtn" > Create Theater</Link>
+           <Link to="/createConcert" className="primaryBtn" > Create Concert</Link>
+           
         </div>
       )}
     </section>

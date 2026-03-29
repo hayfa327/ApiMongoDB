@@ -1,96 +1,101 @@
  
-
-.menuPage {
+.managePage {
   min-height: 100vh;
-  background: white;
+  
 
   display: flex;
+  flex-direction: column; /* 👈 IMPORTANT */
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
- 
 
-.menuContent {
+ 
+.manageContent {
   text-align: center;
-  width: 100%;
-  max-width: 550px;
-}
-
- 
-.menuContent h1 {
-  font-size: 40px;
-  font-weight: 600;
-}
-
- 
-.menuContent p {
-  font-size: 16px;
-  color: #777;
   margin-bottom: 30px;
 }
 
  
-
-.menuButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
+.manageContent h1 {
+  font-size: 45px;
+  font-weight: 550;
+  margin-bottom: 10px;
 }
 
  
-.primaryBtn,
-.secondaryBtn {
-  flex: 1;  
-max-width: 100%;
-  padding: 14px;
-  font-size: 15px;
+.manageContent p {
+  font-size: 16px;
+  color: #777;
+}
+
+ 
+.actions {
+  display: flex;
+  flex-wrap: wrap;  
+  justify-content: center;
+  gap: 15px;
+  max-width: 500px;
+}
+
+ 
+.actions a {
+  width: 220px;
+  padding: 13px 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   text-decoration: none;
-  border-radius: 6px;
-  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+
+  border: 1px solid #8a8a8aa9;
+  color: black;
+  background: transparent;
+
+  transition: 0.2s ease;
 }
 
  
 .primaryBtn {
   background: #02021a;
   color: white;
-   
+  border: none;
+}
+
+.primaryBtn1 {
+  background:  white;
+  color: rgb(14, 13, 13);
+  border: none;
+}
+
+
+ 
+.actions a:hover {
+  background: #eee;
+}
+
+.primaryBtn:hover {
+  background: #1a1a2e;
 }
 
  
-.secondaryBtn {
-  color: black;
-}
-
- 
-
 @media (max-width: 768px) {
+  .manageContent h1 {
+    font-size: 30px;
 
-  .menuContent h1 {
-    font-size: 24px;
+
   }
 
-  .menuContent p {
-    font-size: 14px;
-  }
-
-  .menuButtons {
-    flex-direction: column;  
-    gap: 15px;
+  .actions {
+    flex-direction: column;
     align-items: center;
   }
 
-  .primaryBtn,
-  .secondaryBtn {
-    width: 50%;
-
+  .actions a {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
   }
 }
