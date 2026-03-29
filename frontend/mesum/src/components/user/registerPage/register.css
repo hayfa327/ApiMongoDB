@@ -82,6 +82,8 @@
 .registerBox {
   width: 100%;
   max-width: 420px;
+  border: 1px solid rgba(192, 192, 192, 0.205);
+  padding: 20px;
 }
 
  
@@ -137,6 +139,14 @@
   font-weight: 600; 
   color: #353535; 
 }
+
+.primaryBtn:disabled {
+  background: #33333342;
+  color: black;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+ 
 
 
 .secondaryBtn {

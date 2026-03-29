@@ -112,6 +112,8 @@ html, body, #root {
 .loginBox {
   width: 100%;
   max-width: 420px;
+  border: 1px solid rgba(192, 192, 192, 0.205);
+  padding: 20px;
 }
 
  
@@ -119,7 +121,7 @@ html, body, #root {
 .loginBox h1 {
   font-size: 28px;
   font-weight: 500;
-  margin-bottom: 10px;
+  width: 500px;
 }
 
 .subtitle {
