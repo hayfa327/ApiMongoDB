@@ -1,5 +1,5 @@
 import {useState} from "react"
-import  try from "../../../assets/try.jpeg"
+import  login from "../../../assets/login.jpeg"
 import {Link, useNavigate }  from "react-router-dom";
 import "./login.css"
 
@@ -55,7 +55,7 @@ const isDisabled = !email || !password;
       
       
       <div className="loginImage">
-        <img src={try} alt="gallery corridor" />
+        <img src={login} alt="gallery corridor" />
 
 
   <div className="imageText">

@@ -28,7 +28,7 @@ html, body, #root {
   bottom: -3px;
   width: 0%;
   height: 1px;
-  background: rgba(63, 15, 236, 0.6);
+  background:  #db59599f;
   transition: width 0.3s ease;
 }
 
@@ -76,7 +76,7 @@ html, body, #root {
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: rgba(63, 15, 236, 0.8);
+  color:  #db59599f;
 }
 
 .imageText p {
@@ -111,9 +111,9 @@ html, body, #root {
 
 .loginBox {
   width: 100%;
-  max-width: 420px;
-   
-  padding: 20px;
+  max-width: 500px;
+   border: 1px solid #5857572a;
+  padding: 80px 30px;
   
 }
 
@@ -152,7 +152,7 @@ html, body, #root {
 
 .inputGroup input:focus {
   outline: none;
-  border-color: rgba(80, 18, 161, 0.678);
+  border-color:  #db59599f;
 }
 
  
