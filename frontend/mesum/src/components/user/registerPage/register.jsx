@@ -11,6 +11,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isDisabled = !email || !password;
 
   const handleRegister = async (register) => {
     register.preventDefault();
@@ -105,7 +106,7 @@ export default function Register() {
           />
         </div>
 
-        <button type="submit" className="primaryBtn">
+        <button type="submit" className="primaryBtn" disabled={isDisabled}  >
           Create Account
         </button>
 

@@ -6,7 +6,7 @@ import "./changePassword.css"
 export default function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
+const isDisabled = !oldPassword ||  !newPassword ;
   const navigate = useNavigate();
 
   const handleChangePassword = async (changePass) => {
@@ -80,7 +80,7 @@ export default function ChangePassword() {
           />
         </div>
 
-        <button type="submit" className="primaryBtn">
+        <button type="submit" className="primaryBtn" disabled={isDisabled} >
           Update Password
         </button>
 

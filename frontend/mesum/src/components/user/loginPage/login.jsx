@@ -6,7 +6,7 @@ import "./login.css"
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+const isDisabled = !email || !password;
   const navigate = useNavigate();
 
   const handleLogin = async (login) => {
@@ -66,7 +66,11 @@ export default function Login() {
 
     
       <div className="loginContent">
+
+ 
+
         <div className="loginBox">
+          
           <Link to="/" className="backHome">
   ←  Back to Home
 </Link>
@@ -96,7 +100,7 @@ export default function Login() {
             </div>
 
  
-            <button type="submit" className="primaryBtn">
+            <button type="submit" className="primaryBtn"  disabled={isDisabled} >
               Sign In
             </button>
           </form>
