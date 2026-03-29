@@ -1,7 +1,8 @@
 
 .registerPage {
   display: flex;
-  min-height: 100vh;
+  min-height: 90vh;
+  width: 100%;
 }
 
 
@@ -40,7 +41,7 @@
   bottom: -3px;
   width: 0%;
   height: 1px;
-  background:   #f30707f6;
+  background:  rgba(63, 15, 236, 0.6);
   transition: width 0.3s ease;
 }
 
@@ -70,22 +71,21 @@
 
 
 .registerContent {
-  flex: 1;
+ flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+   justify-content: center;
+   align-items: start;
   padding: 40px;
   background: rgb(255, 255, 255);
+  margin-top: 10px;
  
 }
 
 .registerBox {
-  width: 100%;
+   width: 100%;
   max-width: 500px;
-       border: 0.5px solid #db59599f;
-       
-  padding: 80px 30px;
   
+  padding: 50px 30px;
 }
 
  
@@ -122,7 +122,7 @@
 
 .inputGroup input:focus {
   outline: none;
-  border-color:  #db59599f;
+  border-color: rgb(118, 20, 230);
 }
 
 
@@ -204,8 +204,7 @@
 
 .loginLink a:hover {
   font-weight: 600;
-  color:  #db59599f;
- 
+  color: rgb(118, 20, 230) ;
 }
 
  
