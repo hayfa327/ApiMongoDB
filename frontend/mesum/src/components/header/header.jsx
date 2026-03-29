@@ -57,14 +57,19 @@ const navigate = useNavigate();
       <>
         <Link to="/manageAccount">Manage Account</Link>
 
-        {/* 👇 ADMIN ONLY */}
+      
         {role === "admin" && (
+         
           <Link to="/admin">Admin Dashboard</Link>
+      
+         
         )}
 
-        {/* 👇 ARTIST ONLY */}
+       
         {role === "artist" && (
+       
           <Link to="/myArt">My Art</Link>
+        
         )}
 
         <button onClick={handleLogout}>Logout</button>
