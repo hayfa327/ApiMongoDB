@@ -5,6 +5,7 @@ import "./header.css";
 export default function Header() {
   const [open, setOpen] = useState(false);
     const username = localStorage.getItem("username");
+const role = localStorage.getItem("role");
 
 const navigate = useNavigate();
 
@@ -42,39 +43,38 @@ const navigate = useNavigate();
           <button onClick={() => setOpen(!open)} className="signInBtn">
             {username ? `👤 ${username}` : " 👤 Sign in"} 
           </button>
+{open && (
+  <div className="dropdown">
 
-          {open && (
-            <div className="dropdown">
+    {!username && (
+      <>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Create Account</Link>
+      </>
+    )}
 
-            
-              {!username && (
-                <>
-                  <Link to="/login" onClick={() => setOpen(false)}>
-                    Login
-                  </Link>
+    {username && (
+      <>
+        <Link to="/manageAccount">Manage Account</Link>
 
-                  <Link to="/register" onClick={() => setOpen(false)}>
-                    Create Account
-                  </Link>
-                </>
-              )}
+        {/* 👇 ADMIN ONLY */}
+        {role === "admin" && (
+          <Link to="/admin">Admin Dashboard</Link>
+        )}
 
-           
-              {username && (
-                <>
-                  <Link to="/manageAccount" onClick={() => setOpen(false)}>
-                    Manage Account
-                  </Link>
+        {/* 👇 ARTIST ONLY */}
+        {role === "artist" && (
+          <Link to="/myArt">My Art</Link>
+        )}
 
-                  <button onClick={handleLogout}>
-                    Logout
-                  </button>
-                </>
-              )}
+        <button onClick={handleLogout}>Logout</button>
+      </>
+    )}
 
-            </div>
-          )}
-        </div>
+  </div>
+ )}
+    
+  </div>      
  <div className="location">
     <span className="dot purple"></span>
     STOCKHOLM
