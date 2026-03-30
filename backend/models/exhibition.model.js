@@ -27,7 +27,12 @@
     ref: "User",
     required: true,
   },
+   image: {
+    type: String,
+    default: "",
+  },
 },
+  
 { timestamps: true }
 );
 

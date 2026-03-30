@@ -5,7 +5,7 @@ import { User } from "../models/user.model.js";
 const createExibition = async (req , res) => {
   try {
 
-const {title, description, startDate, endDate, artistId} = req.body;
+const {title, description, startDate, endDate, artistId, image} = req.body;
 const artist = await User.findById(artistId)
 if (!artist || artist.role !== "artist") {
   return res.status(400).json({ message : "Invalid artist"})
@@ -16,7 +16,8 @@ const exhibition = await Exhibition.create({
   description, 
   startDate,
   endDate, 
-  artist: artistId
+  artist: artistId, 
+  image,
 });
 
 res.status(201).json({message: "Exhibition created successfully", exhibition});
@@ -32,7 +33,7 @@ res.status(201).json({message: "Exhibition created successfully", exhibition});
 
 const getAllExhibitions = async (req, res) => {
   try {
-    const exhibitions = await Exhibition.find().populate("artist", "username email").sort({createdAt: -1});
+    const exhibitions = await Exhibition.find({ artist: req.params.artistId }).populate("artist", "username email").sort({createdAt: -1});
     res.status(200).json({exhibitions});
 
   }
@@ -45,7 +46,7 @@ const getAllExhibitions = async (req, res) => {
 const getExhibitionsByArtist = async (req, res) => {
   try{
 const exibitions = await Exhibition.find({artist: req.params.artistId}).populate("artist", "username email").sort({createdAt: -1});
-res.status(200).json({exibitions});
+res.status(200).json({exhibitions});
   }
   catch (error) {
     res.status(500).json({message: "Error fetching exhibitions by artist", error: error.message});
