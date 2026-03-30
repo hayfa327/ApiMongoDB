@@ -33,7 +33,9 @@ res.status(201).json({message: "Exhibition created successfully", exhibition});
 
 const getAllExhibitions = async (req, res) => {
   try {
-    const exhibitions = await Exhibition.find({ artist: req.params.artistId }).populate("artist", "username email").sort({createdAt: -1});
+    const exhibitions = await Exhibition.find()
+  .populate("artist", "username email")
+  .sort({ createdAt: -1 });
     res.status(200).json({exhibitions});
 
   }
