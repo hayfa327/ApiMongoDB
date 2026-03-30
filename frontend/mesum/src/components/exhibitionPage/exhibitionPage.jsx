@@ -6,15 +6,25 @@ export default function AllExhibitions() {
   const [exhibitions, setExhibitions] = useState([]);
   const navigate = useNavigate();
 
-   useEffect(() => {
-    fetch("https://mesum-api.onrender.com/api/v1/exhibitions/all")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);  
-        setExhibitions(data.exhibitions);  
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  useEffect(() => {
+  const getExhibitions = async () => {
+    try {
+      const res = await fetch(
+        "https://mesum-api.onrender.com/api/v1/exhibitions/all"
+      );
+
+      if (!res.ok) throw new Error("Failed to fetch");
+
+      const data = await res.json();
+
+      setExhibitions(data.exhibitions || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getExhibitions();
+}, []);
 
   return (
     <section className="exhibitionsPage">
