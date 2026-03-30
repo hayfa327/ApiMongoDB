@@ -8,7 +8,7 @@ import Header from "./components/header/header"
 import Update from "./components/user/updatePaymentPage/updatePayment"
 import HomeExhibition from  "./components/HomePage/exhibitions/homeExhibitions"
 import AllExhibitions from "./components/exhibitionPage/exhibitionPage"
- 
+import CreateExhibition from "./components/user/MangeAccount/admin/admainCreateexibition" 
 
 
 export default function App() {
@@ -32,6 +32,7 @@ export default function App() {
   <Route path="/changePassword" element={< ChangePassword />} />
     <Route path="/upadatPayment" element={< Update />} />
   <Route path="/manageAccount" element={< AuthMenu />} />
+    <Route path="/createExhibitions" element={< CreateExhibition />} />
   
 </Routes>
 </BrowserRouter>

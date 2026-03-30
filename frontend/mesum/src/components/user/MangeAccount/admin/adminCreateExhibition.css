@@ -1,37 +1,29 @@
 .createPage {
-  background: #f9f9f9;
-  min-height: 100vh;
   padding: 80px 20px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #f8f8f8;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
-/* TITLE */
 .createPage h1 {
   text-align: center;
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 36px;
   margin-bottom: 10px;
 }
 
-.subtitle {
+.createPage p {
   text-align: center;
-  color: #888;
-  margin-bottom: 50px;
-  font-size: 14px;
+  color: #777;
+  margin-bottom: 40px;
 }
 
-/* FORM */
+/* FORM CONTAINER */
 .form {
-  max-width: 720px;
+  max-width: 700px;
   margin: auto;
-}
-
-/* LABELS */
-.form label {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 8px;
-  color: #333;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
 }
 
 /* INPUTS */
@@ -39,31 +31,26 @@
 .form textarea {
   width: 100%;
   padding: 12px;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
+  border-radius: 6px;
   font-size: 14px;
-  margin-bottom: 25px;
   outline: none;
-  background: white;
 }
 
 .form textarea {
-  height: 140px;
+  height: 120px;
   resize: none;
 }
 
 /* IMAGE UPLOAD BOX */
-.imageUpload {
+ .imageUpload {
   border: 2px dashed #ddd;
   height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: #aaa;
-  font-size: 13px;
-  margin-bottom: 30px;
-  cursor: pointer;
-  transition: 0.3s;
+  overflow: hidden; /* 👈 IMPORTANT */
 }
 
 .imageUpload:hover {
@@ -71,40 +58,48 @@
   color: black;
 }
 
-/* DATE ROW */
+ 
 .dateRow {
   display: flex;
-  gap: 20px;
-  margin-bottom: 25px;
+  gap: 15px;
 }
 
-.dateRow div {
+.dateRow input {
   flex: 1;
 }
 
-/* BUTTONS */
+ 
 .buttonRow {
   display: flex;
   gap: 15px;
   margin-top: 20px;
 }
 
-.primaryBtn {
+.primaryBtn3 {
   background: black;
   color: white;
   padding: 12px;
   border: none;
   cursor: pointer;
-  font-size: 13px;
-  letter-spacing: 1px;
   flex: 1;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.secondaryBtn {
-  background: transparent;
+.primaryBtn3:hover {
+  background: #222;
+}
+
+.secondaryBtn4 {
+  background: white;
   border: 1px solid #ddd;
   padding: 12px;
   cursor: pointer;
-  font-size: 13px;
   flex: 1;
+}
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
 }

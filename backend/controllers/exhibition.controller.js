@@ -5,7 +5,8 @@ import { User } from "../models/user.model.js";
 const createExibition = async (req , res) => {
   try {
 
-const {title, description, startDate, endDate, artistId, image} = req.body;
+const {title, description, startDate, endDate , image} = req.body;
+const artistId = req.user.id;
 const artist = await User.findById(artistId)
 if (!artist || artist.role !== "artist") {
   return res.status(400).json({ message : "Invalid artist"})
