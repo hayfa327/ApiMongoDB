@@ -110,11 +110,26 @@ res.status(500).json({message: "Internal Server Error", error: error.message});
   }
 };
 
+ const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select("username email role");
+
+    res.status(200).json({ users });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching users", error: error.message,
+    });
+  }
+};
+
+
 export {
   registerUser,
   loginUser,
   logoutUser,
-  changePassword 
+  changePassword,
+  getAllUsers
 
 }
 
