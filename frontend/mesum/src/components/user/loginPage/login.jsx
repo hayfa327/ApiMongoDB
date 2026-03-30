@@ -110,7 +110,8 @@ setLoading(false);
                 type="password"
                 placeholder="••••••••"
                 value={password}
-                onChange={(loginValue) => setPassword(loginValue.target.value)}
+                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 

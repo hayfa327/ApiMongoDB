@@ -16,7 +16,7 @@ const [endDate, setEndDate] = useState("");
 
  
 useEffect(() => {
-  fetch("https://mesum-api.onrender.com/api/v1/users") // or your route
+  fetch("https://mesum-api.onrender.com/api/v1/users/all") // or your route
     .then(res => res.json())
     .then(data => {
       // filter only artists
