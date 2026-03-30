@@ -13,6 +13,7 @@ router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").post(logoutUser);
 router.put("/change-password", auth, changePassword)
-router.get("/all", auth, isAdmin, getAllUsers); // only for admin in future
+router.get("/all",  getAllUsers); 
+
 
 export default router; 
