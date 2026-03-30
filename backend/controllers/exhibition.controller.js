@@ -38,6 +38,7 @@ const getAllExhibitions = async (req, res) => {
 
   }
   catch (error) {
+     console.error("GET EXHIBITIONS ERROR:", error); 
     res.status(500).json({message: "Error fetching exhibitions", error: error.message});
   }
 }
