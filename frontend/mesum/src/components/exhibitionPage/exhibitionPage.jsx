@@ -7,13 +7,24 @@ export default function AllExhibitions() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://mesum-api.onrender.com/api/v1/exhibitions/all")
-      .then((res) => res.json())
-      .then((data) => {
-        setExhibitions(data.exhibitions);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const getExhibitions = async () => {
+    try {
+      const res = await fetch(
+        "https://mesum-api.onrender.com/api/v1/exhibitions/all"
+      );
+
+      if (!res.ok) throw new Error("Failed to fetch");
+
+      const data = await res.json();
+
+      setExhibitions(data.exhibitions || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getExhibitions();
+}, []);
 
   return (
     <section className="exhibitionsPage">
