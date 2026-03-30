@@ -13,7 +13,7 @@ router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").post(logoutUser);
 router.put("/change-password", auth, changePassword)
-router.get("/all",  getAllUsers); 
+router.get("/all",  auth, isAdmin, getAllUsers); 
 
 
 export default router; 
