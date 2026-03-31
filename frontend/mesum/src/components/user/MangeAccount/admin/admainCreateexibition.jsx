@@ -15,15 +15,22 @@ const [endDate, setEndDate] = useState("");
   const navigate = useNavigate();
 
  
-useEffect(() => {
-  fetch("https://mesum-api.onrender.com/api/v1/users/all") // or your route
-    .then(res => res.json())
-    .then(data => {
-      // filter only artists
-      const onlyArtists = data.users.filter(u => u.role === "artist");
-      setArtists(onlyArtists);
-    });
-}, []);
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const res = await fetch(
+          "https://mesum-api.onrender.com/api/v1/users/artists"
+        );
+        const data = await res.json();
+
+        setArtists(data.artists || []);
+      } catch (error) {
+        console.error("Error fetching artists:", error);
+      }
+    };
+
+    fetchArtists();
+  }, []);
 
     const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -44,6 +51,11 @@ const token = localStorage.getItem("token");
   return;
 }
 
+  if (!title || !description || !startDate || !endDate || !artistId) {
+      alert("Please fill all fields");
+      return;
+    }
+
     try {
       const response = await fetch(
         "https://mesum-api.onrender.com/api/v1/exhibitions/create",
@@ -51,7 +63,7 @@ const token = localStorage.getItem("token");
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             title,
@@ -67,8 +79,8 @@ const token = localStorage.getItem("token");
       const data = await response.json();
  
 
-      if (!response.ok) {
-        alert(data.message);
+       if (!response.ok) {
+        alert(data.message || "Something went wrong");
         return;
       }
 
@@ -127,8 +139,12 @@ const token = localStorage.getItem("token");
     />
 
     <label>Artist ID</label>
-   <select value={artistId} onChange={(e) => setArtistId(e.target.value)}>
+   <select
+  value={artistId}
+  onChange={(e) => setArtistId(e.target.value)}
+>
   <option value="">Select Artist</option>
+
   {artists.map((artist) => (
     <option key={artist._id} value={artist._id}>
       {artist.username}
