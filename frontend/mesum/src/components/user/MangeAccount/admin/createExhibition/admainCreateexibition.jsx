@@ -1,5 +1,6 @@
 import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { UserPlus } from "lucide-react";
 import "./adminCreateExhibition.css";
 
 export default function CreateExhibition() {
@@ -11,6 +12,7 @@ const [endDate, setEndDate] = useState("");
   const [preview, setPreview] = useState("");
   const [artists, setArtists] = useState([]);
   const [artistId, setArtistId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -52,6 +54,8 @@ const token = localStorage.getItem("token");
   return;
 }
 
+setLoading(true);
+
   if (!title || !description || !startDate || !endDate || !artistId) {
       alert("Please fill all fields");
       return;
@@ -91,16 +95,27 @@ const token = localStorage.getItem("token");
     } catch (error) {
       console.error(error);
       alert("Error creating exhibition");
+    }finally {
+      setLoading(false);
     }
    
   };
 
   return (
    <section className="createPage">
-  <h1>Create Exhibition</h1>
-  <p className="subtitle">
-    Add a new exhibition to the gallery collection
-  </p>
+      <div className="container">
+    
+          <div className="headerBlock">
+            <div className="title"> 
+       <UserPlus className="iconSvg" />
+    
+      <h1>Create Exhibition</h1>
+     </div>
+      <p className="subtitle">
+         Add a new exhibition to the gallery collection
+      </p>
+    </div>
+  
 
   <form onSubmit={handleSubmit} className="form">
 
@@ -174,9 +189,14 @@ const token = localStorage.getItem("token");
     </div>
 
     <div className="buttonRow">
-      <button type="submit" className="primaryBtn3">
-        CREATE EXHIBITION
-      </button>
+       <button
+    type="submit"
+    className="primaryBtnAdd"
+    disabled={!title || !description || !artistId || loading}
+  >
+    {loading ? "Creating..." : "CREATE EXHIBITION"}
+  </button>
+ 
 
       <button type="button" className="secondaryBtn4">
         CANCEL
@@ -184,6 +204,7 @@ const token = localStorage.getItem("token");
     </div>
 
   </form>
+  </div>
 </section>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {UserPlus} from "lucide-react"; 
 import "./addArtist.css";
 
 export default function AddArtist() {
@@ -72,10 +73,17 @@ export default function AddArtist() {
     <section className="addArtistPage">
       <div className="container">
 
-        <h1>➕ Add Artist</h1>
-        <p className="subtitle">
-          Create a new artist account with gallery access
-        </p>
+      <div className="headerBlock">
+        <div className="title"> 
+   <UserPlus className="iconSvg" />
+
+  <h1>Add Artist</h1>
+ </div>
+  <p className="subtitle">
+    
+    Create a new artist account with gallery access
+  </p>
+</div>
 
         <form onSubmit={handleSubmit} className="form">
 
@@ -104,10 +112,6 @@ export default function AddArtist() {
             onChange={(artistValue) => setPassword(artistValue.target.value)}
             autoComplete="new-password"
           />
-
-          <p className="hint">
-            Must be at least 8 characters with uppercase, lowercase, and number
-          </p>
 
           <label>Confirm Password</label>
           <input

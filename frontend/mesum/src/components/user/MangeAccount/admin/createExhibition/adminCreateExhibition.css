@@ -5,23 +5,58 @@
   font-family: "Helvetica Neue", sans-serif;
 }
 
-.createPage h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 10px;
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+   
 }
 
-.createPage p {
+ .headerBlock {
   text-align: center;
-  color: #777;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 }
+
+/* ICON + TITLE ROW */
+.title {
+  display: flex;
+  align-items: start;
+  
+  gap: 30px; /* space between icon and text */
+}
+
+/* ICON */
+.iconSvg {
+  width: 36px;
+  height: 36px;
+  color: #999; /* soft grey like design */
+  stroke-width: 2; /* thinner lines (important!) */
+}
+
+/* TITLE TEXT */
+.title h1 {
+  font-size: 50px;
+  font-weight: 400; /* not bold */
+  color: #111;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* SUBTITLE */
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+  font-weight: 300;
+  text-align: start;
+}
+
+ 
 
 /* FORM CONTAINER */
 .form {
   max-width: 700px;
   margin: auto;
-  background: white;
+  
   padding: 40px;
   border-radius: 12px;
 }
@@ -33,7 +68,6 @@
   padding: 12px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 6px;
   font-size: 14px;
   outline: none;
 }
@@ -75,19 +109,24 @@
   margin-top: 20px;
 }
 
-.primaryBtn3 {
+ .primaryBtnAdd {
   background: black;
   color: white;
   padding: 12px;
   border: none;
+  width: 100%;
+  font-size: 13px;
+  letter-spacing: 1px;
   cursor: pointer;
-  flex: 1;
-  font-weight: bold;
   transition: 0.3s;
 }
 
-.primaryBtn3:hover {
-  background: #222;
+.primaryBtnAdd:hover {
+  opacity: 0.85;
+}
+
+.primaryBtnAdd:disabled {
+  background: #ccc;
 }
 
 .secondaryBtn4 {
