@@ -1,4 +1,4 @@
-/* PAGE */
+ 
 .addArtistPage {
   background: #f7f7f7;
   min-height: 100vh;
@@ -6,46 +6,45 @@
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* CONTAINER */
+ 
 .container {
   max-width: 700px;
   margin: 0 auto;
    
 }
 
-/* HEADER */
-/* HEADER CONTAINER */
+ 
 .headerBlock {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
-/* ICON + TITLE ROW */
+ 
 .title {
   display: flex;
   align-items: start;
   
-  gap: 30px; /* space between icon and text */
+  gap: 30px;  
 }
 
-/* ICON */
+ 
 .iconSvg {
   width: 50px;
   height: 50px;
-  color: #999999d8; /* soft grey like design */
-  stroke-width: 2; /* thinner lines (important!) */
+  color: #999999af;  
+  stroke-width: 1.5; 
 }
 
-/* TITLE TEXT */
+ 
 .title h1 {
   font-size: 50px;
-  font-weight: 400; /* not bold */
+  font-weight: 400;  
   color: #111;
   letter-spacing: 0.5px;
   margin: 0;
 }
 
-/* SUBTITLE */
+ 
 .subtitle {
   font-size: 16px;
   color: #888;
@@ -55,13 +54,13 @@
 }
 
  
-/* FORM */
+ 
 .form {
   display: flex;
   flex-direction: column;
 }
 
-/* LABEL */
+ 
 .form label {
   font-size: 13px;
   margin-top: 18px;
@@ -69,7 +68,7 @@
   color: #333;
 }
 
-/* INPUT */
+ 
 .form input,
 .form textarea,
 .form select {
@@ -81,14 +80,14 @@
   transition: 0.2s;
 }
 
-/* FOCUS */
+ 
 .form input:focus,
 .form textarea:focus,
 .form select:focus {
   border-color: rgba(80, 18, 161, 0.678);
 }
 
-/* ROLE BOX */
+
 .roleBox {
   margin-top: 20px;
   padding: 15px;
@@ -106,14 +105,13 @@
   margin-top: 5px;
 }
 
-/* BUTTONS */
 .buttonRow {
   display: flex;
   gap: 10px;
   margin-top: 25px;
 }
 
-/* PRIMARY BUTTON */
+
 .primaryBtnAdd:disabled {
   background: black;
   color: white;
@@ -135,7 +133,7 @@
   cursor: not-allowed;
 }
 
-/* SECONDARY BUTTON */
+
 .secondaryBtnAddArtist {
   background: white;
   border: 1px solid #ddd;

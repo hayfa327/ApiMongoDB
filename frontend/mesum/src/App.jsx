@@ -10,6 +10,8 @@ import HomeExhibition from  "./components/HomePage/exhibitions/homeExhibitions"
 import AllExhibitions from "./components/exhibitionPage/exhibitionPage"
 import CreateExhibition from "./components/user/MangeAccount/admin/createExhibition/admainCreateexibition" 
 import AddArtist from "./components/user/MangeAccount/admin/addArtist/addArtist"
+import AdminDashboard from "./components/user/MangeAccount/admin/Dashboard/adminDashboard"
+
 
 export default function App() {
 
@@ -34,6 +36,7 @@ export default function App() {
     <Route path="/upadatPayment" element={< Update />} />
   <Route path="/manageAccount" element={< AuthMenu />} />
     <Route path="/createExhibitions" element={< CreateExhibition />} />
+    <Route path="/admin" element={< AdminDashboard />} />
   
 </Routes>
 </BrowserRouter>

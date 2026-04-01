@@ -1,0 +1,102 @@
+.adminPage {
+  padding: 60px 80px;
+  background: #f7f7f7;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+ 
+.title {
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 40px;
+}
+
+ 
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+ 
+.card {
+  background: #f2f2f2;
+  padding: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 80%;
+}
+
+.card:hover {
+  background: #eaeaea;
+  font-size: 25px;
+}
+
+ 
+.icon {
+  width: 28px;
+  height: 28px;
+  color: #999;
+  margin-bottom: 15px;
+  stroke-width: 1.5;
+}
+
+ 
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.5;
+}
+
+
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 40px 0;
+}
+
+
+.statsTitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+
+
+.statCard {
+  background: #f2f2f2;
+  padding: 25px;
+  border-radius: 6px;
+}
+
+.statCard h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.statCard p {
+  font-size: 13px;
+  color: #777;
+  margin-top: 5px;
+}

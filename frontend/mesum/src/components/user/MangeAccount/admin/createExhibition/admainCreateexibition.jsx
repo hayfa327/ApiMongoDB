@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import { UserPlus } from "lucide-react";
+import {   PlusCircle} from "lucide-react";
 import "./adminCreateExhibition.css";
 
 export default function CreateExhibition() {
@@ -45,8 +45,8 @@ const [endDate, setEndDate] = useState("");
     setImage(imageUrl);   // (temporary) save to send to backend
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (createexibition) => {
+    createexibition.preventDefault();
 const token = localStorage.getItem("token");
 
       if (!token) {
@@ -107,7 +107,8 @@ setLoading(true);
     
           <div className="headerBlock">
             <div className="title"> 
-       <UserPlus className="iconSvg" />
+              
+       <PlusCircle className="iconSvg" />
     
       <h1>Create Exhibition</h1>
      </div>
@@ -132,7 +133,7 @@ setLoading(true);
     <img src={preview} className="previewImg" />
   ) : (
     <>
-      <p>Click to upload or drag and drop</p>
+       
       <span>PNG, JPG up to 10MB</span>
     </>
   )}
@@ -144,20 +145,20 @@ setLoading(true);
   type="text"
   placeholder="Enter exhibition title"
   value={title}
-  onChange={(e) => setTitle(e.target.value)}
+  onChange={(createValue) => setTitle(createValue.target.value)}
 />
 
     <label>Description</label>
     <textarea 
       placeholder="Enter exhibition description" 
       value={description}
-      onChange={(e) => setDescription(e.target.value)}
+      onChange={(createValue) => setDescription(createValue.target.value)}
     />
 
     <label>Artist ID</label>
    <select
   value={artistId}
-  onChange={(e) => setArtistId(e.target.value)}
+  onChange={(createValue) => setArtistId(createValue.target.value)}
 >
   <option value="">Select Artist</option>
 
