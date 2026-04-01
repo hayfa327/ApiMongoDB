@@ -9,6 +9,13 @@ const registerUser = async (req , res) => {
  if (!username || !email || !password) {
   return res.status(400).json({message: "All fields are important!"})
  }
+
+  if (password.length < 6 || password.length > 15) {
+      return res.status(400).json({
+        message: "Password must be 6–15 characters",
+      });
+    }
+
  const existing = await User.findOne({email: email.toLowerCase()});
  if (existing) {
   return res.status(400).json({message: "user already exists!"})
