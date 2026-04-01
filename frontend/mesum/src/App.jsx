@@ -11,6 +11,7 @@ import AllExhibitions from "./components/exhibitionPage/exhibitionPage"
 import CreateExhibition from "./components/user/MangeAccount/admin/createExhibition/admainCreateexibition" 
 import AddArtist from "./components/user/MangeAccount/admin/addArtist/addArtist"
 import AdminDashboard from "./components/user/MangeAccount/admin/Dashboard/adminDashboard"
+import NewsletterFooter from "./components/footer/footer"
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
 <Route path="/AllExhibitions" element={< AllExhibitions />} />
 <Route path="/collection" element={<div>Collection</div>} />
 <Route path="/addArtist" element={< AddArtist />} />
+<Route path="/exhibitions/:id" element={< NewsletterFooter/>} />
  
  
   <Route path="/login" element={<Login />} />

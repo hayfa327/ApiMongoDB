@@ -36,7 +36,7 @@ export default function  HomeExhibition () {
       onClick={() => navigate(`/exhibitions/${item._id}`)}
     >
 
-      <div className="imageWrapper">
+      <div className="imageWrapper1">
         <img
           src={item.image || "https://picsum.photos/600/800"}
           alt={item.title}
@@ -60,7 +60,7 @@ export default function  HomeExhibition () {
   ))}
 </div>
   <div className="viewAll">
-    <button onClick={() => navigate("/Exhibitions")}>
+    <button onClick={() => navigate("/AllExhibitions")}>
       View All Exhibitions →
     </button>
   </div>

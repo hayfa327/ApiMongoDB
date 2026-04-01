@@ -58,15 +58,15 @@
 }
 
  
-.imageWrapper {
+.imageWrapper1 {
   position: relative;
   overflow: hidden;
 }
 
  
-.imageWrapper img {
+.imageWrapper1 img {
   width: 70%;
-  height: 600px;
+  height: 700px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
@@ -129,8 +129,8 @@
  
 
 .viewAll {
-  margin-top: 40px;
-  text-align: center;
+  margin-top: 60px;
+  text-align: right;
 }
 
 .viewAll button {
@@ -139,4 +139,8 @@
   font-size: 16px;
   cursor: pointer;
   color: black;
+}
+.viewAll button:hover {
+  color: #33333342;
+  font-weight: 600;
 }
