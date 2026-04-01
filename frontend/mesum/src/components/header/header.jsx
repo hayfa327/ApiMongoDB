@@ -31,7 +31,7 @@ const navigate = useNavigate();
       <nav className="nav">
   <Link to="/" className="active">Live</Link>
   <Link to="/performances">Performances</Link>
-  <Link to="/exhibitions">Exhibitions</Link>
+  <Link to="/Exhibitions">Exhibitions</Link>
   <Link to="/collection">Collections</Link>
   
 </nav>

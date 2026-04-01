@@ -3,7 +3,7 @@
   background: #f7f7f7;
   min-height: 100vh;
    padding: 80px 20px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
  
@@ -16,15 +16,19 @@
  
 .headerBlock {
   text-align: center;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+ 
 }
 
  
 .title {
   display: flex;
-  align-items: start;
+  align-items: center;
+  justify-content: flex-start;
+  gap : 12px
   
-  gap: 30px;  
+  
 }
 
  
@@ -50,7 +54,7 @@
   color: #888;
   margin-top: 10px;
   font-weight: 300;
-  text-align: start;
+  text-align: left;
 }
 
  
@@ -58,12 +62,12 @@
 .form {
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
  
 .form label {
   font-size: 13px;
-  margin-top: 18px;
   margin-bottom: 6px;
   color: #333;
 }

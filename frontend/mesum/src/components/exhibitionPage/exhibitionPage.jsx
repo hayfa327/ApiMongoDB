@@ -29,45 +29,47 @@ export default function AllExhibitions() {
   return (
     <section className="exhibitionsPage">
 
-      <h1>All Exhibitions</h1>
+       <div className="heroHeader">
+  <h1 className="heroTitle">Exhibitions</h1>
 
-      <div className="grid">
-        {exhibitions.map((item) => (    
+  <p className="heroSubtitle">
+    A carefully curated collection of contemporary works exploring
+    the boundaries of artistic expression
+  </p>
+</div>
+ 
+ <div className="grid">
+  {exhibitions.slice(0, 40).map((item) => (
+    <div
+      key={item._id}
+      className="item"
+      onClick={() => navigate(`/exhibitions/${item._id}`)}
+    >
 
-          <div key={item._id} className="card">
+      <div className="imageWrapper">
+        <img
+          src={item.image || "https://picsum.photos/600/800"}
+          alt={item.title}
+        />
 
-            <div
-              className="cardImg"
-              style={{
-                backgroundImage: `url(${item.image || "https://picsum.photos/400/300"})`
-              }}
-            >
-              <span className="badge">EXHIBITION</span>
-            </div>
-
-            <div className="cardContent">
-              <h3>{item.title}</h3>
-
-              <p className="artist">
-                by {item.artist?.username}
-              </p>
-
-              <p className="desc">
-                {item.description.slice(0, 80)}...
-              </p>
-
-              <button
-                className="primaryBtn"
-                onClick={() => navigate(`/exhibitions/${item._id}`)}
-              >
-                View Exhibition
-              </button>
-            </div>
-
-          </div>
-
-        ))}
+        <button className="hoverBtn">
+          View Exhibition →
+        </button>
       </div>
+
+      <div className="info">
+        <h3>{item.title}</h3>
+        <p className="artist">{item.artist?.username}</p>
+        <p className="date">
+          {new Date(item.startDate).toLocaleDateString()} –{" "}
+          {new Date(item.endDate).toLocaleDateString()}
+        </p>
+      </div>
+
+    </div>
+  ))}
+</div>
+     
 
     </section>
   );

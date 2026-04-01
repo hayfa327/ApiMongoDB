@@ -17,58 +17,54 @@ export default function  HomeExhibition () {
   }, []);
 
   return (
-    <section className="homeExhibitions">
-  
+  <section className="homeExhibitions">
+ <div className="heroHeader">
+  <h1 className="heroTitle">Exhibitions</h1>
 
-      <h2>Current Exhibitions</h2>
+  <p className="heroSubtitle">
+    A carefully curated collection of contemporary works exploring
+    the boundaries of artistic expression
+  </p>
+</div>
+ 
 
-    <div className="grid">
+ <div className="grid">
   {exhibitions.slice(0, 3).map((item) => (
-    <div key={item._id} className="card">
+    <div
+      key={item._id}
+      className="item"
+      onClick={() => navigate(`/exhibitions/${item._id}`)}
+    >
 
-      
-      <div
-        className="cardImg"
-        style={{
-          backgroundImage: `url(${item.image || "https://picsum.photos/400/300"})`
-        }}
-      >
-        <span className="badge">LIVE NOW</span>
-      </div>
+      <div className="imageWrapper">
+        <img
+          src={item.image || "https://picsum.photos/600/800"}
+          alt={item.title}
+        />
 
-      
-      <div className="cardContent">
-
-        <p className="category">EXHIBITION</p>
-
-        <h3>{item.title}</h3>
-
-        <p className="artist">by {item.artist?.username}</p>
-
-        <p className="desc">
-          {item.description.slice(0, 80)}...
-        </p>
-
-        <p className="date">
-          {new Date(item.startDate).toLocaleDateString()}
-        </p>
-
-        <button
-          className="primaryBtn"
-          onClick={() => navigate(`/exhibitions/${item._id}`)}
-        >
-          View Exhibition
+        <button className="hoverBtn">
+          View Exhibition →
         </button>
-
       </div>
+
+      <div className="info">
+        <h3>{item.title}</h3>
+        <p className="artist">{item.artist?.username}</p>
+        <p className="date">
+          {new Date(item.startDate).toLocaleDateString()} –{" "}
+          {new Date(item.endDate).toLocaleDateString()}
+        </p>
+      </div>
+
     </div>
   ))}
 </div>
-<div className="viewAll">
-  <button onClick={() => navigate("/AllExhibitions")}>
-    View All Exhibitions →
-  </button>
-</div>
-    </section>
+  <div className="viewAll">
+    <button onClick={() => navigate("/Exhibitions")}>
+      View All Exhibitions →
+    </button>
+  </div>
+
+</section>
   );
 }

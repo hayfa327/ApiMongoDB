@@ -2,7 +2,7 @@
   padding: 80px 20px;
   background: #f8f8f8;
   min-height: 100vh;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .container {
@@ -13,7 +13,7 @@
 
  .headerBlock {
   text-align: center;
-  margin-bottom: 0px;
+ 
 }
 
  
