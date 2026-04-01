@@ -22,6 +22,7 @@ app.use("/api/v1/users", userRouter);
 // route: https://mesum-api.onrender.com/api/v1/users/change-password
 // route : https://mesum-api.onrender.com/api/v1/users/all
 // route : https://mesum-api.onrender.com/api/v1/users/artists
+// route : https://mesum-api.onrender.com/api/v1/users/make-admin/id
 
 
 app.use("/api/v1/exhibitions", exhibitionRouter);
