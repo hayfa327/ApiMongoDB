@@ -15,7 +15,7 @@ router.route("/logout").post(logoutUser);
 router.put("/change-password", auth, changePassword)
 router.get("/all",  auth, isAdmin, getAllUsers); 
 router.get("/artists", getAllArtists); // public route to get all artists
-router.post("/artist", auth, isAdmin, addArtist)
+router.post("/artists", auth, isAdmin, addArtist)
 
 
 export default router; 
