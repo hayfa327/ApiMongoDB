@@ -8,8 +8,8 @@ import Header from "./components/header/header"
 import Update from "./components/user/updatePaymentPage/updatePayment"
 import HomeExhibition from  "./components/HomePage/exhibitions/homeExhibitions"
 import AllExhibitions from "./components/exhibitionPage/exhibitionPage"
-import CreateExhibition from "./components/user/MangeAccount/admin/admainCreateexibition" 
-
+import CreateExhibition from "./components/user/MangeAccount/admin/createExhibition/admainCreateexibition" 
+import AddArtist from "./components/user/MangeAccount/admin/addArtist/addArtist"
 
 export default function App() {
 
@@ -25,7 +25,7 @@ export default function App() {
 <Route path="/exhibitions" element={< HomeExhibition />} />
 <Route path="/AllExhibitions" element={< AllExhibitions />} />
 <Route path="/collection" element={<div>Collection</div>} />
-<Route path="/addArtist" element={<div>add artist</div>} />
+<Route path="/addArtist" element={< AddArtist />} />
  
  
   <Route path="/login" element={<Login />} />

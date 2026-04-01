@@ -31,7 +31,7 @@ export default function AuthMenu() {
         <div className="actions">
            <Link to="/changePassword" className="primaryBtn1" >Change Password</Link>
           <Link to="/createExhibitions" className="primaryBtn2" > Create Exhibition</Link>
-          <Link to="/addArtsit" className="primaryBtn2" > Add Artist</Link>
+          <Link to="/addArtist" className="primaryBtn2" > Add Artist</Link>
            <Link to="createPerformance" className="primaryBtn2" > Create Performance</Link>
            
         </div>
