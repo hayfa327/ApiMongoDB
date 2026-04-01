@@ -25,6 +25,7 @@ export default function App() {
 <Route path="/exhibitions" element={< HomeExhibition />} />
 <Route path="/AllExhibitions" element={< AllExhibitions />} />
 <Route path="/collection" element={<div>Collection</div>} />
+<Route path="/addArtist" element={<div>add artist</div>} />
  
  
   <Route path="/login" element={<Login />} />
