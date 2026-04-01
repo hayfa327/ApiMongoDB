@@ -15,6 +15,7 @@ const [endDate, setEndDate] = useState("");
   const navigate = useNavigate();
 
  
+console.log("Sending artistId:", artistId);
   useEffect(() => {
     const fetchArtists = async () => {
       try {

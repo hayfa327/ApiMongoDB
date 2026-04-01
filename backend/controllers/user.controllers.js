@@ -125,8 +125,9 @@ res.status(500).json({message: "Internal Server Error", error: error.message});
 
 const getAllArtists = async (req, res) => {
   try {
-    const artists = await User.find({ role: "artist" })
-      .select("_id username email role");
+    const artists = await User.find({
+      role: { $regex: "^artist$", $options: "i" } 
+    }).select("_id username email role");
 
     res.status(200).json({ artists });
 
@@ -138,13 +139,51 @@ const getAllArtists = async (req, res) => {
   }
 };
 
+ const addArtist = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+   
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+   
+    const artist = await User.create({
+      username,
+      email,
+      password,
+      role: "artist",  
+    });
+
+    res.status(201).json({
+      message: "Artist created successfully",
+      artist,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Error creating artist",
+      error: error.message,
+    });
+  }
+};
+
+
 export {
   registerUser,
   loginUser,
   logoutUser,
   changePassword,
   getAllUsers,
-  getAllArtists
+  getAllArtists,
+  addArtist
 
 }
 
