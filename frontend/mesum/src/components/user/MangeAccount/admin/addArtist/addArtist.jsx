@@ -7,8 +7,8 @@ export default function AddArtist() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+ const handleSubmit = async (addartist) => {
+  addartist.preventDefault();
 
   if (password !== confirmPassword) {
     alert("Passwords do not match");
@@ -76,7 +76,7 @@ export default function AddArtist() {
             type="text"
             placeholder="Enter artist username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(artistValue) => setUsername(artistValue.target.value)}
           />
 
           <label>Email Address</label>
@@ -84,7 +84,7 @@ export default function AddArtist() {
             type="email"
             placeholder="artist@example.com"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(artistValue) => setEmail(artistValue.target.value)}
             autoComplete="username"
           />
 
@@ -93,7 +93,7 @@ export default function AddArtist() {
             type="password"
             placeholder="Enter secure password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(artistValue) => setPassword(artistValue.target.value)}
             autoComplete="new-password"
           />
 
@@ -106,7 +106,7 @@ export default function AddArtist() {
             type="password"
             placeholder="Confirm password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(artistValue) => setConfirmPassword(artistValue.target.value)}
             autoComplete="new-password"
           />
 
