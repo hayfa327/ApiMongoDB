@@ -73,18 +73,9 @@ h1 {
   margin-top: 25px;
 }
 
-.primaryBtn {
-  background: black;
-  color: white;
-  padding: 12px;
-  border: none;
-  flex: 1;
-  cursor: pointer;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
+ 
 
-.secondaryBtn {
+.secondaryBtnAddArtist {
   background: white;
   border: 1px solid #ddd;
   padding: 12px;
@@ -96,4 +87,27 @@ h1 {
 /* FOCUS EFFECT */
 input:focus {
   border-color: black;
+}
+.primaryBtnAdd {
+  background: black;
+  color: white;
+  padding: 12px;
+  border: none;
+  flex: 1;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+/* hover */
+.primaryBtnAdd:hover {
+  opacity: 0.85;
+}
+
+/* disabled state */
+.primaryBtnAdd:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
 }

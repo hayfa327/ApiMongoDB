@@ -5,6 +5,7 @@ export default function AddArtist() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
  const handleSubmit = async (addartist) => {
@@ -21,6 +22,10 @@ export default function AddArtist() {
     alert("You must be logged in as admin");
     return;
   }
+  
+  setLoading(true);
+
+   
 
   try {
     const response = await fetch(
@@ -43,10 +48,11 @@ export default function AddArtist() {
 
     if (!response.ok) {
       alert(data.message);
+      setLoading(false);
       return;
     }
 
-    alert("Artist created successfully 🎉");
+    alert("Artist created successfully");
 
     // reset form
     setUsername("");
@@ -57,6 +63,8 @@ export default function AddArtist() {
   } catch (error) {
     console.error(error);
     alert("Error creating artist");
+  }finally {
+    setLoading(false);
   }
 };
 
@@ -118,11 +126,15 @@ export default function AddArtist() {
           </div>
 
           <div className="buttonRow">
-            <button type="submit" className="primaryBtn">
-              ADD ARTIST
-            </button>
+           <button
+  type="submit"
+  className="primaryBtnAdd"
+  disabled={!email || !password || loading}
+>
+  {loading ? "Creating..." : "ADD ARTIST"}
+</button> 
 
-            <button type="button" className="secondaryBtn">
+            <button type="button" className="secondaryBtnAddArtist">
               CANCEL
             </button>
           </div>
