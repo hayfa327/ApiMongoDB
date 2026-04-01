@@ -7,16 +7,58 @@ export default function AddArtist() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("You must be logged in as admin");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      "https://mesum-api.onrender.com/api/v1/users/artists",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,  
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message);
       return;
     }
 
-    console.log({ username, email, password });
-  };
+    alert("Artist created successfully 🎉");
+
+    // reset form
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+
+  } catch (error) {
+    console.error(error);
+    alert("Error creating artist");
+  }
+};
 
   return (
     <section className="addArtistPage">
