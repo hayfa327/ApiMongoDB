@@ -30,9 +30,9 @@ export default function AuthMenu() {
        {role === "admin" && (
         <div className="actions">
            <Link to="/changePassword" className="primaryBtn1" >Change Password</Link>
-          <Link to="/createExhibitions" className="primaryBtn2" > Create Exhibition</Link>
-          <Link to="/addArtist" className="primaryBtn2" > Add Artist</Link>
-           <Link to="createPerformance" className="primaryBtn2" > Create Performance</Link>
+            <Link to="/upadatPayment" className="primaryBtn2" >Update Payment</Link>
+          <Link to="/addAdmin" className="primaryBtn2" > Add and Delete Admin</Link>
+           <Link to="/getAllUser" className="primaryBtn2" > get all User</Link>
            
         </div>
       )}
