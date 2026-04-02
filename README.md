@@ -1,4 +1,4 @@
-# 🎨 Mesum – Full Stack Art Platform
+#  Mesum – Full Stack Art Platform
 
 Mesum is a full-stack web platform designed to manage and showcase exhibitions, artists, and cultural events.
 
@@ -11,7 +11,7 @@ https://mesum-api.onrender.com
 
 ---
 
-## 🧠 Project Overview
+##  Project Overview
 
 Mesum is built as a scalable system for art platforms, including:
 
@@ -19,7 +19,7 @@ Mesum is built as a scalable system for art platforms, including:
 - Artists  
 - Future support for performances, theater, and cultural events  
 
-### 🎯 The platform focuses on:
+###  The platform focuses on:
 
 - Clean, gallery-style UI  
 - Role-based access control  
@@ -28,7 +28,7 @@ Mesum is built as a scalable system for art platforms, including:
 
 ---
 
-## 🏗 Full Stack Architecture
+## Full Stack Architecture
 
 Frontend (React / Vite)  
 ↓  
@@ -76,7 +76,7 @@ MongoDB Atlas (Cloud Database)
 
 ---
 
-## 🔐 Authentication System
+##  Authentication System
 
 - JWT-based authentication  
 - Token returned on login  
@@ -115,7 +115,7 @@ Only admin users can:
 
 ---
 
-## 🎨 Artist System
+##  Artist System
 
 - Admin creates an artist account  
 - Each artist gets a unique ID  
@@ -161,7 +161,7 @@ GET /api/v1/exhibitions/all
 
 ---
 
-## 🔍 Future Features (Planned)
+##  Future Features (Planned)
 
 ### Visitors will be able to:
 - Search exhibitions by artist name  
@@ -177,7 +177,7 @@ GET /api/v1/exhibitions/all
 
 ---
 
-## 🎨 Frontend Features
+##  Frontend Features
 
 ### Home Page
 - Displays featured exhibitions  
@@ -268,7 +268,7 @@ Mesum is designed as a scalable digital platform for art and culture.
 
 ---
 
-## 👨‍💻 About
+##  About
 
 This project demonstrates:
 
