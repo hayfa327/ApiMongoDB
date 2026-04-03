@@ -273,6 +273,30 @@ html, body, #root {
  text-align: center;
 }
 
+/* DEMO SECTION */
+.demoLogin {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* DEMO BUTTONS */
+.demoLogin button {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.demoLogin button:hover {
+  background: #f3f3f3;
+}
+
+
+
 @media (max-width: 768px) {
   .loginPage {
     flex-direction: column;

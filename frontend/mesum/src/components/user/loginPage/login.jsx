@@ -62,6 +62,71 @@ setLoading(false);
  
   };
 
+
+const loginDemo = async (role) => {
+  setError("");
+  setLoading(true);
+
+  let credentials;
+
+  if (role === "admin") {
+    credentials = {
+      email: "admin@test.com",
+      password: "Admin123"
+    };
+  }
+
+  if (role === "artist") {
+    credentials = {
+      email: "artist@test.com",
+      password: "Artist123"
+    };
+  }
+
+  if (role === "visitor") {
+    credentials = {
+      email: "visitor@test.com",
+      password: "Visitor123"
+    };
+  }
+
+  try {
+    const response = await fetch(
+      "https://mesum-api.onrender.com/api/v1/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.message || "Demo login failed");
+      setLoading(false);
+      return;
+    }
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("username", data.user.username);
+    localStorage.setItem("role", data.user.role);
+
+    navigate("/");
+  } catch (error) {
+    console.error(error);
+    setError("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
+  
+
   return (
   
     <section className="loginPage">
@@ -122,7 +187,23 @@ setLoading(false);
             </button>
           </form>
 
+   <div className="demoLogin">
+    <span>Quick Demo Access</span>
+  
 
+  <button onClick={() => loginDemo("admin")}>
+    Login as Admin
+  </button>
+
+  <button onClick={() => loginDemo("artist")}>
+    Login as Artist
+  </button>
+
+  <button onClick={() => loginDemo("visitor")}>
+    Login as Visitor
+  </button>
+
+</div>
 
           <div className="links" >
             <div className="divider">
@@ -141,6 +222,9 @@ setLoading(false);
         </div>
       </div>
        
+ 
+
+
     </section>
   );
   };
