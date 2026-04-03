@@ -74,6 +74,16 @@ MongoDB Atlas (Cloud Database)
 - Create artist accounts  
 - Manage platform content  
 
+### Demo Access
+
+For testing purposes, demo accounts are available:
+
+- Admin: admin@test.com
+- Artist: artist@test.com
+- Visitor: visitor@test.com
+
+These allow quick exploration of role-based features.
+
 ---
 
 ##  Authentication System
