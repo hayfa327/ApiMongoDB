@@ -48,7 +48,7 @@ export default function AllExhibitions() {
 
       <div className="imageWrapper">
         <img
-          src={item.image || "https://picsum.photos/600/800"}
+          src={item.image}  
           alt={item.title}
         />
 

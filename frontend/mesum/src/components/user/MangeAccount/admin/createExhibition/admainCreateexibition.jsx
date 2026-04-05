@@ -35,11 +35,11 @@ const [endDate, setEndDate] = useState("");
     fetchArtists();
   }, []);
 
-    const handleImageUpload = async(e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  const handleImageUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const formData = new FormData();
+  const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", "unsigned_preset");
 
@@ -51,17 +51,22 @@ const [endDate, setEndDate] = useState("");
         body: formData,
       }
     );
- const data = await res.json();
+
+    const data = await res.json();
 
     console.log("Cloudinary response:", data);
 
-    // SAVE REAL URL
+    if (data.error) {
+      alert(data.error.message);
+      return;
+    }
+
     setImage(data.secure_url);
     setPreview(data.secure_url);
 
   } catch (error) {
     console.error(error);
-    alert("Image upload failed");
+    alert("Upload failed");
   }
 };
 

@@ -37,8 +37,8 @@ export default function  HomeExhibition () {
     >
 
       <div className="imageWrapper1">
-        <img
-          src={item.image || "https://picsum.photos/600/800"}
+         <img
+          src={item.image  || "/fallback.jpg"}  
           alt={item.title}
         />
 
