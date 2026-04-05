@@ -35,15 +35,35 @@ const [endDate, setEndDate] = useState("");
     fetchArtists();
   }, []);
 
-    const handleImageUpload = (e) => {
+    const handleImageUpload = async(e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const imageUrl = URL.createObjectURL(file);
+    const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "unsigned_preset");
 
-    setPreview(imageUrl); // show preview
-    setImage(imageUrl);   // (temporary) save to send to backend
-  };
+  try {
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/doxbrbcaf/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+ const data = await res.json();
+
+    console.log("Cloudinary response:", data);
+
+    // SAVE REAL URL
+    setImage(data.secure_url);
+    setPreview(data.secure_url);
+
+  } catch (error) {
+    console.error(error);
+    alert("Image upload failed");
+  }
+};
 
   const handleSubmit = async (createexibition) => {
     createexibition.preventDefault();
