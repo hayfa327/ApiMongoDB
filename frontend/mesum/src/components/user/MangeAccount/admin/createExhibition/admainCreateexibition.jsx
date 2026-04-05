@@ -35,7 +35,7 @@ const [endDate, setEndDate] = useState("");
     fetchArtists();
   }, []);
 
-  const handleImageUpload = async (e) => {
+ const handleImageUpload = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
@@ -45,7 +45,7 @@ const [endDate, setEndDate] = useState("");
 
   try {
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/doxbrbcaf/image/upload",
+       "https://api.cloudinary.com/v1_1/doxbrbcdf/image/upload",
       {
         method: "POST",
         body: formData,
@@ -54,9 +54,10 @@ const [endDate, setEndDate] = useState("");
 
     const data = await res.json();
 
-    console.log("Cloudinary response:", data);
+    console.log("FULL RESPONSE:", data);
 
     if (data.error) {
+      console.error("Cloudinary Error:", data.error);
       alert(data.error.message);
       return;
     }
@@ -66,7 +67,6 @@ const [endDate, setEndDate] = useState("");
 
   } catch (error) {
     console.error(error);
-    alert("Upload failed");
   }
 };
 
