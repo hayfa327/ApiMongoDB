@@ -13,6 +13,7 @@ const [endDate, setEndDate] = useState("");
   const [artists, setArtists] = useState([]);
   const [artistId, setArtistId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [artworks, setArtworks] = useState([]);
 
   const navigate = useNavigate();
 
@@ -70,6 +71,37 @@ const [endDate, setEndDate] = useState("");
   }
 };
 
+ const handleArtworksUpload = async (e) => {
+  const files = Array.from(e.target.files);
+
+  const uploaded = await Promise.all(
+    files.map(async (file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "unsigned_preset");
+
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/doxbrbcdf/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await res.json();
+
+      return {
+        image: data.secure_url,
+        title: file.name
+      };
+    })
+  );
+
+ 
+  setArtworks((prev) => [...prev, ...uploaded]);
+};
+
+
   const handleSubmit = async (createexibition) => {
     createexibition.preventDefault();
 const token = localStorage.getItem("token");
@@ -102,6 +134,7 @@ setLoading(true);
             artistId,
             endDate,
             image,
+            artworks
           }),
         }
       );
@@ -163,6 +196,20 @@ setLoading(true);
     </>
   )}
 
+</div>
+
+<label>Artworks (Multiple Images)</label>
+
+<input
+  type="file"
+  accept="image/*"
+  multiple
+  onChange={handleArtworksUpload}
+/>
+<div className="previewGrid">
+  {artworks.map((art, index) => (
+    <img key={index} src={art.image} className="previewImg" />
+  ))}
 </div>
 
     <label>Exhibition Title</label>
