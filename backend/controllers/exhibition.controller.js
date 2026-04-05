@@ -5,7 +5,7 @@ import { User } from "../models/user.model.js";
 const createExibition = async (req , res) => {
   try {
 
-const {title, description, startDate, endDate ,artistId,  image} = req.body;
+const {title, description, startDate, endDate ,artistId,  image, artworks} = req.body;
  
 const artist = await User.findById(artistId)
 if   (!artist || artist.role?.trim().toLowerCase() !== "artist") {
@@ -19,6 +19,7 @@ const exhibition = await Exhibition.create({
   endDate, 
   artist: artistId, 
   image,
+  artworks
 });
 
 res.status(201).json({message: "Exhibition created successfully", exhibition});

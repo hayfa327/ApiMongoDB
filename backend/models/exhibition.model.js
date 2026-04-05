@@ -31,6 +31,12 @@
     type: String,
     default: "",
   },
+  artworks: [
+  {
+    image: String,
+    title: String
+  }
+]
 },
   
 { timestamps: true }
