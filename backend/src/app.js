@@ -1,20 +1,18 @@
-import express from "express"
+import express from "express";
 import cors from "cors";
 
 const app = express();
 
+// REVIEW: CORS is wide open with no origin restrictions — configure allowed origins for production (e.g., your frontend domain only)
 app.use(cors());
 app.use(express.json());
-
- 
 
 //import routes
 import userRouter from "../routes/user-route.js";
 import exhibitionRouter from "../routes/exhibition-route.js";
 
 //route declaration
-app.use("/api/v1/users", userRouter); 
-
+app.use("/api/v1/users", userRouter);
 
 //route:  https://mesum-api.onrender.com/api/v1/users/register
 // route:  https://mesum-api.onrender.com/api/v1/users/login
@@ -24,14 +22,10 @@ app.use("/api/v1/users", userRouter);
 // route : https://mesum-api.onrender.com/api/v1/users/artists
 // route : https://mesum-api.onrender.com/api/v1/users/make-admin/id
 
-
 app.use("/api/v1/exhibitions", exhibitionRouter);
 
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/create
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/all
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/artist/:artistId
 
-
- 
-
-export default app; 
+export default app;

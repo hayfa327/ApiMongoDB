@@ -1,34 +1,28 @@
-
-
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   padding: 25px 40px;
-  background:  white;
+  background: white;
 
   font-size: 14px;
 }
-
 
 .logo {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 500;
-  
-
 }
 
+/* REVIEW: .dot uses "color" but has no background-color set — for a circular dot element, you likely need "background-color: #9b22ec" instead of "color" */
 .dot {
   width: 8px;
   height: 8px;
   color: #9b22ec;
   border-radius: 50%;
 }
-
- 
 
 .nav {
   display: flex;
@@ -42,20 +36,16 @@
   padding-bottom: 5px;
 }
 
-
 .nav a:hover::after {
-      content: "";
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background:  #9b22ec;
-
+  background: #9b22ec;
 }
 
-  
- 
 .nav .active {
   color: black;
 }
@@ -65,7 +55,7 @@
   align-items: center;
   gap: 25px;
 }
- 
+
 .signInBtn {
   background: none;
   border: none;
@@ -73,13 +63,11 @@
   font-size: 14px;
   color: #333;
   border-radius: 15px;
-  border : 1px solid rgba(119, 119, 119, 0.096);
-  padding: 10px ;
-  
+  border: 1px solid rgba(119, 119, 119, 0.096);
+  padding: 10px;
 }
 
-
-.signInBtn:hover { 
+.signInBtn:hover {
   font-size: 15px;
   width: 100%;
   background: #b9b9b949;
@@ -87,10 +75,8 @@
   border-radius: 10px;
 }
 
-
 .userMenu {
   position: relative;
-    
 }
 
 .dropdown {
@@ -101,20 +87,18 @@
   z-index: 2000;
   background: white;
   border: 1px solid #eee;
-  
 
   display: flex;
   flex-direction: column;
   min-width: 180px;
 
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-   
 }
 
- .userMenu:hover .dropdown {
+.userMenu:hover .dropdown {
   display: flex;
 }
- 
+
 .dropdown a,
 .dropdown button {
   padding: 12px 15px;
@@ -133,7 +117,6 @@
   transition: background 0.2s ease;
 }
 
- 
 .dropdown a:hover,
 .dropdown button:hover {
   background: #7978781f;
@@ -141,7 +124,6 @@
   color: black;
 }
 
- 
 .dropdown a:not(:last-child),
 .dropdown button:not(:last-child) {
   border-bottom: 1px solid #f0f0f0;
@@ -158,5 +140,3 @@
 .purple {
   background: #9b22ec;
 }
-
-

@@ -1,131 +1,139 @@
+// REVIEW: Unused import — "error" from "console" is never used. Remove it.
 import { error } from "console";
-import {User} from "../models/user.model.js";
+import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
-const registerUser = async (req , res) => {
+const registerUser = async (req, res) => {
   try {
- const {username, email, password} = req.body; 
- // basic validation 
- if (!username || !email || !password) {
-  return res.status(400).json({message: "All fields are important!"})
- }
+    const { username, email, password } = req.body;
+    // basic validation
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: "All fields are important!" });
+    }
 
-  if (password.length < 6 || password.length > 15) {
+    if (password.length < 6 || password.length > 15) {
       return res.status(400).json({
         message: "Password must be 6–15 characters",
       });
     }
 
- const existing = await User.findOne({email: email.toLowerCase()});
- if (existing) {
-  return res.status(400).json({message: "user already exists!"})
- }
-  
+    const existing = await User.findOne({ email: email.toLowerCase() });
+    if (existing) {
+      return res.status(400).json({ message: "user already exists!" });
+    }
 
-const user = await User.create(
-  {
-    username, 
-    email: email.toLowerCase(), 
-    password,
-     role: "visitor"
+    const user = await User.create({
+      username,
+      email: email.toLowerCase(),
+      password,
+      role: "visitor",
+    });
+
+    res
+      .status(201)
+      .json({
+        message: "User registered successfully",
+        user: {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+          role: user.role,
+        },
+      });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
   }
-); 
-
-res.status(201).json({message: "User registered successfully",
-   user: {id: user.id, email: user.email, username: user.username, role: user.role}
-  });
- }
-
-  catch (error) {
-res.status(500).json({message: "Internal server error", error: error.message});
-  }
-}; 
-
+};
 
 const loginUser = async (req, res) => {
   try {
-// checking if th user already exists 
-const {email, password} = req.body; 
-const user = await User.findOne({
-email: email.toLowerCase()
-  });
-if (!user) return res.status(400).json ({message: "User not found"});
+    // checking if th user already exists
+    const { email, password } = req.body;
+    const user = await User.findOne({
+      email: email.toLowerCase(),
+    });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
-//  match password 
+    //  match password
 
-const isMatch = await user.comparePassword(password);
-if (!isMatch) return res.status(400).json({
-  message: "Invalid password"
-});
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch)
+      return res.status(400).json({
+        message: "Invalid password",
+      });
 
-const token = jwt.sign(
+    const token = jwt.sign(
       {
         id: user.id,
         role: user.role,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
-
-res.status(200).json({
-  message: "User logged in", 
-  user: {id: user.id, email: user.email, username: user.username, role: user.role},
-  token: token
-})
-
- } catch (error) {
-res.status(500).json({
-  message: "Internet Server Error" , error: error.message
-}); 
+    res.status(200).json({
+      message: "User logged in",
+      user: {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        role: user.role,
+      },
+      token: token,
+    });
+  } catch (error) {
+    // REVIEW: Typo — "Internet Server Error" should be "Internal Server Error"
+    res.status(500).json({
+      message: "Internet Server Error",
+      error: error.message,
+    });
   }
-}
+};
 
 const logoutUser = (req, res) => {
   res.status(200).json({
-    message: "Logout successful. Please remove the token on client side."
+    message: "Logout successful. Please remove the token on client side.",
   });
 };
 
 const changePassword = async (req, res) => {
   try {
-const userId = req.user.id; 
-const {oldPassword, newPassword} = req.body; 
+    const userId = req.user.id;
+    const { oldPassword, newPassword } = req.body;
 
+    const user = await User.findById(userId);
 
-const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-if (!user) {
-  return res.status(404).json({message: "User not found"});
-}
+    const isMatch = await user.comparePassword(oldPassword);
+    if (!isMatch) {
+      return res.status(400).json({ message: "old password is incorrect" });
+    }
 
-const isMatch = await user.comparePassword(oldPassword);
-if (!isMatch) {
-  return res.status(400).json({ message: "old password is incorrect", 
-  }); 
-}
+    user.password = newPassword;
+    await user.save(); //works with bcrypt pre save hook
 
-user.password = newPassword; 
-await user.save();  //works with bcrypt pre save hook
-
-res.status(200).json({message: "password changed successfully"}); 
-
-
-  }
-  catch (error) {
-res.status(500).json({message: "Internal Server Error", error: error.message});
+    res.status(200).json({ message: "password changed successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
 
- const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("username email role");
 
     res.status(200).json({ users });
-
   } catch (error) {
     res.status(500).json({
-      message: "Error fetching users", error: error.message,
+      message: "Error fetching users",
+      error: error.message,
     });
   }
 };
@@ -133,11 +141,10 @@ res.status(500).json({message: "Internal Server Error", error: error.message});
 const getAllArtists = async (req, res) => {
   try {
     const artists = await User.find({
-      role: { $regex: "^artist$", $options: "i" } 
+      role: { $regex: "^artist$", $options: "i" },
     }).select("_id username email role");
 
     res.status(200).json({ artists });
-
   } catch (error) {
     res.status(500).json({
       message: "Error fetching artists",
@@ -146,7 +153,7 @@ const getAllArtists = async (req, res) => {
   }
 };
 
- const addArtist = async (req, res) => {
+const addArtist = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
@@ -154,25 +161,24 @@ const getAllArtists = async (req, res) => {
       return res.status(403).json({ message: "Access denied" });
     }
 
-   
+    // REVIEW: Email is not lowercased before lookup — could create duplicates if "Admin@Test.com" and "admin@test.com" are treated differently
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-   
     const artist = await User.create({
       username,
       email,
       password,
-      role: "artist",  
+      role: "artist",
     });
 
+    // REVIEW: SECURITY — Returning the full artist object leaks the hashed password in the response. Use .select("-password") or manually exclude it.
     res.status(201).json({
       message: "Artist created successfully",
       artist,
     });
-
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -195,11 +201,11 @@ const makeAdmin = async (req, res) => {
     user.role = "admin";
     await user.save();
 
+    // REVIEW: SECURITY — Same issue here: returning the full user object leaks the hashed password
     res.json({
       message: "User promoted to admin",
       user,
     });
-
   } catch (error) {
     res.status(500).json({
       message: "Error updating user",
@@ -207,7 +213,6 @@ const makeAdmin = async (req, res) => {
     });
   }
 };
-
 
 export {
   registerUser,
@@ -217,9 +222,7 @@ export {
   getAllUsers,
   getAllArtists,
   addArtist,
-  makeAdmin
-
-}
-
+  makeAdmin,
+};
 
 // for later I will  do forgotPassword and resetPassword functions

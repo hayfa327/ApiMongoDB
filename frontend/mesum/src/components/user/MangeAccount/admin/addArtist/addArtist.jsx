@@ -1,7 +1,9 @@
 import { useState } from "react";
-import {UserPlus} from "lucide-react"; 
+import { UserPlus } from "lucide-react";
 import "./addArtist.css";
 
+// REVIEW: Uses alert() for all user feedback — should use inline UI messages (like the error state pattern used in login/register)
+// REVIEW: No auth check on the page itself — any user can navigate here directly
 export default function AddArtist() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -9,84 +11,78 @@ export default function AddArtist() {
   const [loading, setLoading] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
- const handleSubmit = async (addartist) => {
-  addartist.preventDefault();
+  const handleSubmit = async (addartist) => {
+    addartist.preventDefault();
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
-
-  const token = localStorage.getItem("token");
-
-  if (!token) {
-    alert("You must be logged in as admin");
-    return;
-  }
-  
-  setLoading(true);
-
-   
-
-  try {
-    const response = await fetch(
-      "https://mesum-api.onrender.com/api/v1/users/artists",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,  
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message);
-      setLoading(false);
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
       return;
     }
 
-    alert("Artist created successfully");
+    const token = localStorage.getItem("token");
 
-    // reset form
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    if (!token) {
+      alert("You must be logged in as admin");
+      return;
+    }
 
-  } catch (error) {
-    console.error(error);
-    alert("Error creating artist");
-  }finally {
-    setLoading(false);
-  }
-};
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://mesum-api.onrender.com/api/v1/users/artists",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            password,
+          }),
+        },
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message);
+        setLoading(false);
+        return;
+      }
+
+      alert("Artist created successfully");
+
+      // reset form
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.error(error);
+      alert("Error creating artist");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="addArtistPage">
       <div className="container">
+        <div className="headerBlock">
+          <div className="title">
+            <UserPlus className="iconSvg" />
 
-      <div className="headerBlock">
-        <div className="title"> 
-   <UserPlus className="iconSvg" />
-
-  <h1>Add Artist</h1>
- </div>
-  <p className="subtitle">
-    
-    Create a new artist account with gallery access
-  </p>
-</div>
+            <h1>Add Artist</h1>
+          </div>
+          <p className="subtitle">
+            Create a new artist account with gallery access
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit} className="form">
-
           <label>Username</label>
           <input
             type="text"
@@ -118,31 +114,34 @@ export default function AddArtist() {
             type="password"
             placeholder="Confirm password"
             value={confirmPassword}
-            onChange={(artistValue) => setConfirmPassword(artistValue.target.value)}
+            onChange={(artistValue) =>
+              setConfirmPassword(artistValue.target.value)
+            }
             autoComplete="new-password"
           />
 
           <div className="roleBox">
             <strong>Role: Artist</strong>
             <p>
-              This account will have artist privileges to manage their own exhibitions
+              This account will have artist privileges to manage their own
+              exhibitions
             </p>
           </div>
 
           <div className="buttonRow">
-           <button
-  type="submit"
-  className="primaryBtnAdd"
-  disabled={!email || !password || loading}
->
-  {loading ? "Creating..." : "ADD ARTIST"}
-</button> 
+            <button
+              type="submit"
+              className="primaryBtnAdd"
+              disabled={!email || !password || loading}
+            >
+              {loading ? "Creating..." : "ADD ARTIST"}
+            </button>
 
+            {/* REVIEW: Cancel button has no onClick handler — clicking it does nothing */}
             <button type="button" className="secondaryBtnAddArtist">
               CANCEL
             </button>
           </div>
-
         </form>
       </div>
     </section>

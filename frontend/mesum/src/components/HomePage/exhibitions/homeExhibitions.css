@@ -1,8 +1,9 @@
+/* REVIEW: CSS class names (.heroHeader, .heroTitle, .heroSubtitle, .grid, .item, .info, .artist, .date, .hoverBtn) are shared between homeExhibitions.css and exhibitionPage.css without CSS modules — these will conflict and override each other unpredictably. Use CSS Modules, BEM naming, or scoped class names. */
 
 .exhibitionsPage {
   background: #f7f7f7;
   min-height: 100vh;
-  font-family: "Helvetica Neue", Arial, sans-serif; 
+  font-family: "Helvetica Neue", Arial, sans-serif;
   width: 100%;
 }
 
@@ -11,15 +12,14 @@
   background: #f7f7f7;
 }
 
- 
 .heroTitle {
-  font-size: 64px;  
+  font-size: 64px;
   font-weight: 400;
   color: #222;
   margin-bottom: 20px;
   letter-spacing: 0.5px;
 }
- 
+
 .heroSubtitle {
   font-size: 18px;
   color: #8c8c8c;
@@ -27,7 +27,6 @@
   line-height: 1.6;
 }
 
- 
 .heroHeader::after {
   content: "";
   display: block;
@@ -38,11 +37,10 @@
 
 .homeExhibitions {
   padding: 80px 60px;
-     background: white;
+  background: white;
   font-family: "Helvetica Neue", Arial, sans-serif;
-   
 }
- 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -50,20 +48,18 @@
   margin-top: 40px;
   background: transparent;
 }
- 
+
 .item {
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
 }
 
- 
 .imageWrapper1 {
   position: relative;
   overflow: hidden;
 }
 
- 
 .imageWrapper1 img {
   width: 90%;
   height: 700px;
@@ -72,12 +68,10 @@
   transition: transform 0.4s ease;
 }
 
- 
 .item:hover img {
   transform: scale(1.03);
 }
 
- 
 .hoverBtn {
   position: absolute;
   bottom: 20px;
@@ -95,18 +89,15 @@
   transition: 0.3s;
 }
 
- 
 .item:hover .hoverBtn {
   opacity: 1;
   transform: translateY(0);
 }
 
- 
 .info {
   margin-top: 15px;
 }
 
- 
 .info h3 {
   font-size: 18px;
   font-weight: 500;
@@ -114,19 +105,16 @@
   margin-bottom: 6px;
 }
 
- 
 .artist {
   font-size: 14px;
   color: #6f7c8a;
   margin-bottom: 4px;
 }
 
- 
 .date {
   font-size: 13px;
   color: #a0a0a0;
 }
- 
 
 .viewAll {
   margin-top: 60px;

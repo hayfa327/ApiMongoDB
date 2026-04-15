@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
- const auth = (req, res, next) => {
+const auth = (req, res, next) => {
   const header = req.headers.authorization;
 
   if (!header) {
@@ -11,17 +11,19 @@ import jwt from "jsonwebtoken"
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-     console.log("DECODED:", decoded);
+    // REVIEW: Debug console.log left in production code — remove to avoid leaking token data in logs
+    console.log("DECODED:", decoded);
 
-    req.user = decoded;    
+    req.user = decoded;
 
-    next();  
+    next();
   } catch (error) {
     return res.status(401).json({ message: "Invalid token" });
   }
 };
 
 const isAdmin = (req, res, next) => {
+  // REVIEW: Debug console.log left in production code — remove to avoid leaking user data in logs
   console.log("REQ.USER:", req.user);
 
   if (!req.user || req.user.role?.trim().toLowerCase() !== "admin") {
@@ -31,11 +33,4 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
- 
-
-
-
-export {
-  auth, 
-  isAdmin 
-}
+export { auth, isAdmin };

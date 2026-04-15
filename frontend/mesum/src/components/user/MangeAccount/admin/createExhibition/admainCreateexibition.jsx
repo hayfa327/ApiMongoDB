@@ -1,13 +1,14 @@
-import { useState , useEffect} from "react";
+// REVIEW: Filename "admainCreateexibition.jsx" has multiple typos — should be "adminCreateExhibition.jsx"
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {   PlusCircle} from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import "./adminCreateExhibition.css";
 
 export default function CreateExhibition() {
- const [title, setTitle] = useState("");
-const [description, setDescription] = useState("");
-const [startDate, setStartDate] = useState("");
-const [endDate, setEndDate] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
   const [artists, setArtists] = useState([]);
@@ -17,13 +18,11 @@ const [endDate, setEndDate] = useState("");
 
   const navigate = useNavigate();
 
- 
-
   useEffect(() => {
     const fetchArtists = async () => {
       try {
         const res = await fetch(
-          "https://mesum-api.onrender.com/api/v1/users/artists"
+          "https://mesum-api.onrender.com/api/v1/users/artists",
         );
         const data = await res.json();
 
@@ -36,84 +35,83 @@ const [endDate, setEndDate] = useState("");
     fetchArtists();
   }, []);
 
- const handleImageUpload = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+  // REVIEW: Cloudinary cloud name ("doxbrbcdf") and upload preset ("unsigned_preset") are hardcoded — move to environment variables
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "unsigned_preset");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "unsigned_preset");
 
-  try {
-    const res = await fetch(
-       "https://api.cloudinary.com/v1_1/doxbrbcdf/image/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    const data = await res.json();
-
-    console.log("FULL RESPONSE:", data);
-
-    if (data.error) {
-      console.error("Cloudinary Error:", data.error);
-      alert(data.error.message);
-      return;
-    }
-
-    setImage(data.secure_url);
-    setPreview(data.secure_url);
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
- const handleArtworksUpload = async (e) => {
-  const files = Array.from(e.target.files);
-
-  const uploaded = await Promise.all(
-    files.map(async (file) => {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "unsigned_preset");
-
+    try {
       const res = await fetch(
         "https://api.cloudinary.com/v1_1/doxbrbcdf/image/upload",
         {
           method: "POST",
           body: formData,
-        }
+        },
       );
 
       const data = await res.json();
 
-      return {
-        image: data.secure_url,
-        title: file.name
-      };
-    })
-  );
+      console.log("FULL RESPONSE:", data);
 
- 
-  setArtworks((prev) => [...prev, ...uploaded]);
-};
+      if (data.error) {
+        console.error("Cloudinary Error:", data.error);
+        alert(data.error.message);
+        return;
+      }
 
+      setImage(data.secure_url);
+      setPreview(data.secure_url);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleArtworksUpload = async (e) => {
+    const files = Array.from(e.target.files);
+
+    const uploaded = await Promise.all(
+      files.map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "unsigned_preset");
+
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/doxbrbcdf/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          },
+        );
+
+        const data = await res.json();
+
+        return {
+          image: data.secure_url,
+          title: file.name,
+        };
+      }),
+    );
+
+    setArtworks((prev) => [...prev, ...uploaded]);
+  };
 
   const handleSubmit = async (createexibition) => {
     createexibition.preventDefault();
-const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-      if (!token) {
-  alert("You must login first");
-  return;
-}
+    if (!token) {
+      alert("You must login first");
+      return;
+    }
 
-setLoading(true);
+    // REVIEW: BUG — setLoading(true) is called BEFORE the validation check. If validation fails and returns early, loading stays true forever. Move setLoading(true) after validation.
+    setLoading(true);
 
-  if (!title || !description || !startDate || !endDate || !artistId) {
+    if (!title || !description || !startDate || !endDate || !artistId) {
       alert("Please fill all fields");
       return;
     }
@@ -125,7 +123,7 @@ setLoading(true);
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             title,
@@ -134,150 +132,136 @@ setLoading(true);
             artistId,
             endDate,
             image,
-            artworks
+            artworks,
           }),
-        }
+        },
       );
 
       const data = await response.json();
- 
 
-       if (!response.ok) {
+      if (!response.ok) {
         alert(data.message || "Something went wrong");
         return;
       }
 
       alert("Exhibition created successfully ");
       navigate("/exhibitions");
-
     } catch (error) {
       console.error(error);
       alert("Error creating exhibition");
-    }finally {
+    } finally {
       setLoading(false);
     }
-   
   };
 
   return (
-   <section className="createPage">
+    <section className="createPage">
       <div className="container">
-    
-          <div className="headerBlock">
-            <div className="title"> 
-              
-       <PlusCircle className="iconSvg" />
-    
-      <h1>Create Exhibition</h1>
-     </div>
-      <p className="subtitle">
-         Add a new exhibition to the gallery collection
-      </p>
-    </div>
-  
+        <div className="headerBlock">
+          <div className="title">
+            <PlusCircle className="iconSvg" />
 
-  <form onSubmit={handleSubmit} className="form">
+            <h1>Create Exhibition</h1>
+          </div>
+          <p className="subtitle">
+            Add a new exhibition to the gallery collection
+          </p>
+        </div>
 
-    <label>Exhibition Image</label>
-  <div className="imageUpload">
+        <form onSubmit={handleSubmit} className="form">
+          <label>Exhibition Image</label>
+          <div className="imageUpload">
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
 
-  <input
-    type="file"
-    accept="image/*"
-    onChange={handleImageUpload}
-  />
+            {/* REVIEW: img elements are missing alt attributes — required for accessibility */}
+            {preview ? (
+              <img src={preview} className="previewImg" />
+            ) : (
+              <>
+                <span>PNG, JPG up to 10MB</span>
+              </>
+            )}
+          </div>
 
-  {preview ? (
-    <img src={preview} className="previewImg" />
-  ) : (
-    <>
-       
-      <span>PNG, JPG up to 10MB</span>
-    </>
-  )}
+          <label>Artworks (Multiple Images)</label>
 
-</div>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleArtworksUpload}
+          />
+          <div className="previewGrid">
+            {artworks.map((art, index) => (
+              <img key={index} src={art.image} className="previewImg" />
+            ))}
+          </div>
 
-<label>Artworks (Multiple Images)</label>
+          <label>Exhibition Title</label>
+          <input
+            type="text"
+            placeholder="Enter exhibition title"
+            value={title}
+            onChange={(createValue) => setTitle(createValue.target.value)}
+          />
 
-<input
-  type="file"
-  accept="image/*"
-  multiple
-  onChange={handleArtworksUpload}
-/>
-<div className="previewGrid">
-  {artworks.map((art, index) => (
-    <img key={index} src={art.image} className="previewImg" />
-  ))}
-</div>
+          <label>Description</label>
+          <textarea
+            placeholder="Enter exhibition description"
+            value={description}
+            onChange={(createValue) => setDescription(createValue.target.value)}
+          />
 
-    <label>Exhibition Title</label>
-    <input
-  type="text"
-  placeholder="Enter exhibition title"
-  value={title}
-  onChange={(createValue) => setTitle(createValue.target.value)}
-/>
+          <label>Artist ID</label>
+          <select
+            value={artistId}
+            onChange={(createValue) => setArtistId(createValue.target.value)}
+          >
+            <option value="">Select Artist</option>
 
-    <label>Description</label>
-    <textarea 
-      placeholder="Enter exhibition description" 
-      value={description}
-      onChange={(createValue) => setDescription(createValue.target.value)}
-    />
+            {artists.map((artist) => (
+              <option key={artist._id} value={artist._id}>
+                {artist.username}
+              </option>
+            ))}
+          </select>
 
-    <label>Artist ID</label>
-   <select
-  value={artistId}
-  onChange={(createValue) => setArtistId(createValue.target.value)}
->
-  <option value="">Select Artist</option>
+          <div className="dateRow">
+            <div>
+              <label>Start Date</label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              />
+            </div>
 
-  {artists.map((artist) => (
-    <option key={artist._id} value={artist._id}>
-      {artist.username}
-    </option>
-  ))}
-</select>
+            <div>
+              <label>End Date</label>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+              />
+            </div>
+          </div>
 
-    <div className="dateRow">
-      <div>
-        <label>Start Date</label>
-        <input
-  type="date"
-  value={startDate}
-  onChange={(e) => setStartDate(e.target.value)}
-/>
+          <div className="buttonRow">
+            <button
+              type="submit"
+              className="primaryBtnAdd"
+              disabled={!title || !description || !artistId || loading}
+            >
+              {loading ? "Creating..." : "CREATE EXHIBITION"}
+            </button>
+
+            {/* REVIEW: Cancel button has no onClick handler — clicking it does nothing */}
+            <button type="button" className="secondaryBtn4">
+              CANCEL
+            </button>
+          </div>
+        </form>
       </div>
-
-      <div>
-        <label>End Date</label>
-         <input
-  type="date"
-  value={endDate}
-  onChange={(e) => setEndDate(e.target.value)}
-/>
-      </div>
-    </div>
-
-    <div className="buttonRow">
-       <button
-    type="submit"
-    className="primaryBtnAdd"
-    disabled={!title || !description || !artistId || loading}
-  >
-    {loading ? "Creating..." : "CREATE EXHIBITION"}
-  </button>
- 
-
-      <button type="button" className="secondaryBtn4">
-        CANCEL
-      </button>
-    </div>
-
-  </form>
-  </div>
-</section>
+    </section>
   );
 }

@@ -2,46 +2,40 @@
   padding: 80px 20px;
   background: #f8f8f8;
   min-height: 100vh;
-    font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .container {
   max-width: 700px;
   margin: 0 auto;
-   
 }
 
- .headerBlock {
+.headerBlock {
   text-align: center;
- 
 }
 
- 
 .title {
   display: flex;
   align-items: start;
-  
-  gap: 30px;  
+
+  gap: 30px;
 }
 
- 
 .iconSvg {
   width: 36px;
   height: 36px;
-  color: #99999998;  
-  stroke-width: 2;  
+  color: #99999998;
+  stroke-width: 2;
 }
 
- 
 .title h1 {
   font-size: 50px;
-  font-weight: 400; 
+  font-weight: 400;
   color: #111;
   letter-spacing: 0.5px;
   margin: 0;
 }
 
- 
 .subtitle {
   font-size: 14px;
   color: #888;
@@ -51,20 +45,18 @@
 }
 
 select {
-  border: 1px solid #ddd;  
+  border: 1px solid #ddd;
   padding: 12px;
 }
 
- 
 .form {
   max-width: 700px;
   margin: auto;
-  
+
   padding: 40px;
   border-radius: 12px;
 }
 
- 
 .form input,
 .form textarea {
   width: 100%;
@@ -80,13 +72,12 @@ select {
   resize: none;
 }
 
- 
- .imageUpload {
+.imageUpload {
   border: 2px dashed #ddd;
   height: 160px;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -96,7 +87,6 @@ select {
   color: black;
 }
 
- 
 .dateRow {
   display: flex;
   gap: 15px;
@@ -107,14 +97,13 @@ select {
   flex: 1;
 }
 
- 
 .buttonRow {
   display: flex;
   gap: 15px;
   margin-top: 20px;
 }
 
- .primaryBtnAdd {
+.primaryBtnAdd {
   background: black;
   color: white;
   padding: 14px;
@@ -141,12 +130,9 @@ select {
   cursor: pointer;
   flex: 1;
 }
+/* REVIEW: width: 0% makes the preview image invisible — should be a positive value like 100% or a fixed width */
 .previewImg {
   width: 0%;
   height: 100%;
   object-fit: cover;
-   
-  
 }
-
- 
