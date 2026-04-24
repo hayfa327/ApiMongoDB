@@ -48,6 +48,30 @@ const getAllExhibitions = async (req, res) => {
 }
 
 
+const getExhibitionById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const exhibition = await Exhibition.findById(id)
+      .populate("artist", "username email")
+      .populate("artworks");  
+
+    if (!exhibition) {
+      return res.status(404).json({ message: "Exhibition not found" });
+    }
+
+    res.status(200).json({ exhibition });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching exhibition",
+      error: error.message
+    });
+  }
+};
+
+
+
 const getExhibitionsByArtist = async (req, res) => {
   try{
 const exibitions = await Exhibition.find({artist: req.params.artistId}).populate("artist", "username email").sort({createdAt: -1});

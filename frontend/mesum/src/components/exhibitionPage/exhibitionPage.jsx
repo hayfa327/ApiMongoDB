@@ -48,7 +48,7 @@ export default function AllExhibitions() {
 
       <div className="imageWrapper">
         <img
-          src={item.image}  
+          src={item.image  || "/fallback.jpg"}  
           alt={item.title}
         />
 

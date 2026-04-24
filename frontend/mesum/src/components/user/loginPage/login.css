@@ -273,7 +273,7 @@ html, body, #root {
  text-align: center;
 }
 
-/* DEMO SECTION */
+ 
 .demoLogin {
   margin-top: 20px;
   display: flex;
@@ -281,7 +281,7 @@ html, body, #root {
   gap: 10px;
 }
 
-/* DEMO BUTTONS */
+ 
 .demoLogin button {
   background: transparent;
   border: 1px solid #ddd;
