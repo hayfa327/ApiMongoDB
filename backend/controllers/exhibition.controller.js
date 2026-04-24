@@ -54,7 +54,7 @@ const getExhibitionById = async (req, res) => {
 
     const exhibition = await Exhibition.findById(id)
       .populate("artist", "username email")
-      .populate("artworks");  
+      .sort({ createdAt: -1 });
 
     if (!exhibition) {
       return res.status(404).json({ message: "Exhibition not found" });
