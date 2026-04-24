@@ -87,5 +87,6 @@ res.status(200).json({exhibitions});
 export {
   createExibition,
   getAllExhibitions, 
-  getExhibitionsByArtist
+  getExhibitionsByArtist,
+  getExhibitionById
 }
