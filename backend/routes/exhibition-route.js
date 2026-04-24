@@ -9,7 +9,11 @@ const router = express.Router();
 
 router.post('/create', auth, isAdmin, createExibition);
 router.get('/all', getAllExhibitions);
-router.get('/artist/:artistId', getExhibitionsByArtist); // by artistId
+router.get('/artist/:artistId', getExhibitionsByArtist); 
+router.get("/exhibitions/:id", getExhibitionById);
+
+
+// by artistId
 // router.get('/:id', getSingleExhibition);              // get one
 // router.put('/:id', auth, isAdmin, updateExhibition);  // update
 // router.delete('/:id', auth, isAdmin, deleteExhibition); // delete

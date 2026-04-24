@@ -30,7 +30,7 @@ app.use("/api/v1/exhibitions", exhibitionRouter);
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/create
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/all
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/artist/:artistId
-
+// route: https://mesum-api.onrender.com/api/v1/exhibitions/exhibitions/:id
 
  
 
