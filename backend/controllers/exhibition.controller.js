@@ -94,6 +94,6 @@ const getExhibitionsByArtist = async (req, res) => {
 export {
   createExibition,
   getAllExhibitions, 
-  getExhibitionsByArtist,
-  getExhibitionById
+  getExhibitionById,
+  getExhibitionsByArtist
 }
