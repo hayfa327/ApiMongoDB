@@ -71,16 +71,23 @@ const getExhibitionById = async (req, res) => {
 };
 
 
-
 const getExhibitionsByArtist = async (req, res) => {
-  try{
-const exibitions = await Exhibition.find({artist: req.params.artistId}).populate("artist", "username email").sort({createdAt: -1});
-res.status(200).json({exhibitions});
+  try {
+    const exhibitions = await Exhibition.find({
+      artist: req.params.artistId
+    })
+      .populate("artist", "username email")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({ exhibitions });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching exhibitions by artist",
+      error: error.message
+    });
   }
-  catch (error) {
-    res.status(500).json({message: "Error fetching exhibitions by artist", error: error.message});
-  }
-}
+};
 
 
 
