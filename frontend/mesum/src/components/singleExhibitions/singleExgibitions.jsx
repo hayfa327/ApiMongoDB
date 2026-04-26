@@ -57,6 +57,7 @@ export default function SingleExhibition() {
 
       <div className="gallery">
         <h2>Featured Artworks</h2>
+        <h1 style={{color:"red"}}>NEW VERSION TEST</h1>
 
         <div className="artGrid">
           {exhibition.artworks.map((art) => (
