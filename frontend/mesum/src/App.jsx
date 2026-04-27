@@ -11,7 +11,6 @@ import AllExhibitions from "./components/exhibitionPage/exhibitionPage"
 import CreateExhibition from "./components/user/MangeAccount/admin/createExhibition/admainCreateexibition" 
 import AddArtist from "./components/user/MangeAccount/admin/addArtist/addArtist"
 import AdminDashboard from "./components/user/MangeAccount/admin/Dashboard/adminDashboard"
-import NewsletterFooter from "./components/footer/footer"
 import SingleExhibition from "./components/singleExhibitions/singleExgibitions"
 
 export default function App() {
