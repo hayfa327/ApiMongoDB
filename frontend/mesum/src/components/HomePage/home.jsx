@@ -1,6 +1,6 @@
 import Hero from "./heroSection/heroSection"
 import HomeExhibition from "./exhibitions/homeExhibitions"
-import NewsletterFooter from "../footer/footer" 
+
 
 
 export default function Home() {
@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <Hero />
       < HomeExhibition />
-     < NewsletterFooter />
        
     </>
   );
