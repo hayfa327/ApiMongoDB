@@ -14,7 +14,6 @@ import AdminDashboard from "./components/user/MangeAccount/admin/Dashboard/admin
 import NewsletterFooter from "./components/footer/footer"
 import SingleExhibition from "./components/singleExhibitions/singleExgibitions"
 
-
 export default function App() {
 
 
