@@ -34,26 +34,30 @@
   margin-bottom: 24px;
 }
 
-/* ===================================
+/*  
    SEARCH (ACCESSIBLE)
-=================================== */
+ */
 
 .searchBox {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: right;
+  justify-content: right;
 }
 
 .searchBox input {
-  flex: 1;
-  min-width: 220px;
-  height: 48px;
+  flex:-1;
+   height: 48px;
+  padding: 0 20px;
 
-  padding: 0 16px;
   border-radius: 999px;
   border: 1px solid #ccc;
 
+  
   font-size: 14px;
+
+  cursor: pointer;
 }
 
 /* accessibility focus */
@@ -88,9 +92,9 @@
   color: #111;
 }
 
-/* ===================================
+/*  
    GRID
-=================================== */
+  */
 
 .grid {
   display: grid;
@@ -98,9 +102,9 @@
   gap: 28px;
 }
 
-/* ===================================
+/*  
    CARD
-=================================== */
+ */
 
 .item {
   cursor: pointer;
@@ -126,9 +130,9 @@
   }
 }
 
-/* ===================================
+/*  
    BUTTON ON IMAGE
-=================================== */
+ */
 
 .hoverBtn {
   position: absolute;
@@ -161,9 +165,9 @@
   }
 }
 
-/* ===================================
+/*  
    TEXT
-=================================== */
+  */
 
 .info {
   margin-top: 12px;
@@ -187,9 +191,9 @@
   color: #888;
 }
 
-/* ===================================
+/*  
    VIEW ALL
-=================================== */
+ */
 
 .viewAll {
   margin-top: 40px;
@@ -204,9 +208,9 @@
   cursor: pointer;
 }
 
-/* ===================================
+/*  
    TABLET
-=================================== */
+  */
 
 @media (max-width: 992px) {
   .homeExhibitions {
@@ -226,9 +230,9 @@
   }
 }
 
-/* ===================================
+/*  
    MOBILE
-=================================== */
+  */
 
 @media (max-width: 768px) {
   .homeExhibitions {
@@ -243,14 +247,18 @@
     font-size: 15px;
   }
 
+ 
   .searchBox {
     flex-direction: column;
+    width: 100%;
   }
 
   .searchBox input,
   .searchBox button {
     width: 100%;
+    max-width: 100%;
   }
+
 
   .grid {
     grid-template-columns: 1fr;
@@ -266,9 +274,9 @@
   }
 }
 
-/* ===================================
+/*  
    SMALL PHONES
-=================================== */
+ */
 
 @media (max-width: 480px) {
   .heroTitle {
