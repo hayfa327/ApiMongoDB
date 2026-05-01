@@ -107,19 +107,26 @@ const updateExhibition = async (req, res) => {
 
     const user = req.user;
 
-    
-    const isOwner =
-      exhibition.artist.toString() === user._id.toString();
+    const isAdmin = user.role?.trim().toLowerCase() === "admin";
 
-    const isAdmin = user.role === "admin";
+    // ✅ ONLY check ownership if NOT admin
+    let isOwner = false;
 
-    if (!isOwner && !isAdmin) {
+    if (!isAdmin && exhibition.artist) {
+      const artistId = exhibition.artist._id
+        ? exhibition.artist._id.toString()
+        : exhibition.artist.toString();
+
+      isOwner = artistId === user.id.toString(); // ✅ IMPORTANT FIX
+    }
+
+    if (!isAdmin && !isOwner) {
       return res.status(403).json({
-        message: "Not authorized to edit this exhibition"
+        message: "Not authorized"
       });
     }
 
-     
+    // ✅ UPDATE DATA
     const updateData = {
       title: req.body.title,
       description: req.body.description,
@@ -129,7 +136,7 @@ const updateExhibition = async (req, res) => {
       artworks: req.body.artworks
     };
 
-     
+    // ✅ ONLY ADMIN CAN CHANGE ARTIST
     if (isAdmin && req.body.artist) {
       updateData.artist = req.body.artist;
     }
@@ -148,8 +155,7 @@ const updateExhibition = async (req, res) => {
       error: error.message
     });
   }
-}; 
-
+};
 
 
 export {
