@@ -109,7 +109,7 @@ const updateExhibition = async (req, res) => {
 
     const isAdmin = user.role?.trim().toLowerCase() === "admin";
 
-    // ✅ ONLY check ownership if NOT admin
+    //  ONLY check ownership if NOT admin
     let isOwner = false;
 
     if (!isAdmin && exhibition.artist) {
@@ -126,7 +126,7 @@ const updateExhibition = async (req, res) => {
       });
     }
 
-    // ✅ UPDATE DATA
+    //  UPDATE DATA
     const updateData = {
       title: req.body.title,
       description: req.body.description,
@@ -136,7 +136,7 @@ const updateExhibition = async (req, res) => {
       artworks: req.body.artworks
     };
 
-    // ✅ ONLY ADMIN CAN CHANGE ARTIST
+    // ONLY ADMIN CAN CHANGE ARTIST
     if (isAdmin && req.body.artist) {
       updateData.artist = req.body.artist;
     }
