@@ -11,7 +11,7 @@ router.post('/create', auth, isAdmin, createExibition);
 router.get('/all', getAllExhibitions);
 router.get('/exhibitions/artist/:artistId', getExhibitionsByArtist); 
 router.get("/exhibitions/:id", getExhibitionById);
-router.put("/exhibitions/:id", auth, isAdmin, updateExhibition);
+router.put("/exhibitions/:id", auth, updateExhibition);
 
 
 // by artistId
