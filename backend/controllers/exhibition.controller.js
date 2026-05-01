@@ -50,8 +50,7 @@ const getAllExhibitions = async (req, res) => {
 
 const getExhibitionsByArtist = async (req, res) => {
   try {
-    console.log("Route hit ✅");
-    console.log("artistId:", req.params.artistId);
+  
     const exhibitions = await Exhibition.find({
       artist: req.params.artistId
     })
@@ -98,7 +97,58 @@ const getExhibitionById = async (req, res) => {
 };
 
 
- 
+const updateExhibition = async (req, res) => {
+  try {
+    const exhibition = await Exhibition.findById(req.params.id);
+
+    if (!exhibition) {
+      return res.status(404).json({ message: "Exhibition not found" });
+    }
+
+    const user = req.user;
+
+    
+    const isOwner =
+      exhibition.artist.toString() === user._id.toString();
+
+    const isAdmin = user.role === "admin";
+
+    if (!isOwner && !isAdmin) {
+      return res.status(403).json({
+        message: "Not authorized to edit this exhibition"
+      });
+    }
+
+     
+    const updateData = {
+      title: req.body.title,
+      description: req.body.description,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      image: req.body.image,
+      artworks: req.body.artworks
+    };
+
+     
+    if (isAdmin && req.body.artist) {
+      updateData.artist = req.body.artist;
+    }
+
+    const updated = await Exhibition.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    );
+
+    res.status(200).json({ exhibition: updated });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error updating exhibition",
+      error: error.message
+    });
+  }
+}; 
 
 
 
@@ -107,4 +157,5 @@ export {
   getAllExhibitions, 
    getExhibitionsByArtist,
   getExhibitionById,
+  updateExhibition
 }
