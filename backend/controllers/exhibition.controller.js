@@ -158,6 +158,41 @@ const updateExhibition = async (req, res) => {
 };
 
 
+const deleteExhibition = async (req, res) => {
+  try {
+    const exhibition = await Exhibition.findById(req.params.id);
+
+    if (!exhibition) {
+      return res.status(404).json({
+        message: "Exhibition not found"
+      });
+    }
+
+    const user = req.user;
+
+    
+    if (user.role?.trim().toLowerCase() !== "admin") {
+      return res.status(403).json({
+        message: "Access denied. Admin only"
+      });
+    }
+
+    
+    await Exhibition.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      message: "Exhibition deleted successfully"
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error deleting exhibition",
+      error: error.message
+    });
+  }
+};
+
+
 export {
   createExibition,
   getAllExhibitions, 
