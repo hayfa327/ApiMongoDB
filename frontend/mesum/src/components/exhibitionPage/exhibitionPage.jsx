@@ -1,75 +1,81 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./exhibitionPage.css"
+import "./exhibitionPage.css" ;
 
-export default function AllExhibitions() {
+export default function HomeExhibition() {
   const [exhibitions, setExhibitions] = useState([]);
+  const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-  const getExhibitions = async () => {
-    try {
-      const res = await fetch(
-        "https://mesum-api.onrender.com/api/v1/exhibitions/all"
-      );
+    const fetchExhibitions = async () => {
+      try {
+        const res = await fetch(
+          "https://mesum-api.onrender.com/api/v1/exhibitions/all"
+        );
 
-      if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setExhibitions(data.exhibitions || []);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      const data = await res.json();
+    fetchExhibitions();
+  }, []);
 
-      setExhibitions(data.exhibitions || []);
-    } catch (error) {
-      console.error(error);
-    }
+  const next = () => {
+    setIndex((prev) =>
+      prev === exhibitions.length - 1 ? prev : prev + 1
+    );
   };
 
-  getExhibitions();
-}, []);
+  const prev = () => {
+    setIndex((prev) =>
+      prev === 0 ? 0 : prev - 1
+    );
+  };
 
   return (
-    <section className="exhibitionsPage">
+    <section className="verticalSlider">
 
-       <div className="heroHeader">
-  <h1 className="heroTitle">Exhibitions</h1>
+      <div
+        className="sliderWrapper"
+        style={{
+          transform: `translateY(-${index * 100}vh)`
+        }}
+      >
+        {exhibitions.map((item) => (
+          <div className="slide" key={item._id}>
 
-  <p className="heroSubtitle">
-    A carefully curated collection of contemporary works exploring
-    the boundaries of artistic expression
-  </p>
-</div>
- 
- <div className="grid">
-  {exhibitions.slice(0, 40).map((item) => (
-    <div
-      key={item._id}
-      className="item"
-      onClick={() => navigate(`/exhibitions/${item._id}`)}
-    >
+            <img src={item.image} alt={item.title} />
 
-      <div className="imageWrapper">
-        <img
-          src={item.image  || "/fallback.jpg"}  
-          alt={item.title}
-        />
+            <div className="content">
+              <h1>{item.title}</h1>
+              <p>{item.artist?.username}</p>
 
-        <button className="hoverBtn">
-          View Exhibition →
-        </button>
+              <button
+                onClick={() =>
+                  navigate(`/exhibitions/${item._id}`)
+                }
+              >
+                Explore Exhibition →
+              </button>
+            </div>
+
+          </div>
+        ))}
       </div>
 
-      <div className="info">
-        <h3>{item.title}</h3>
-        <p className="artist">{item.artist?.username}</p>
-        <p className="date">
-          {new Date(item.startDate).toLocaleDateString()} –{" "}
-          {new Date(item.endDate).toLocaleDateString()}
-        </p>
-      </div>
-
-    </div>
-  ))}
-</div>
      
+      <button className="downBtn" onClick={next}>
+        ↓
+      </button>
+
+      
+      <button className="upBtn" onClick={prev}>
+        ↑
+      </button>
 
     </section>
   );
