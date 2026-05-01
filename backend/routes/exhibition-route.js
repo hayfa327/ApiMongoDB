@@ -12,7 +12,7 @@ router.get('/all', getAllExhibitions);
 router.get('/exhibitions/artist/:artistId', getExhibitionsByArtist); 
 router.get("/exhibitions/:id", getExhibitionById);
 router.put("/exhibitions/:id", auth, updateExhibition);
-router.delete("/:id", auth, isAdmin, deleteExhibition); 
+router.delete("/exhibitions/:id", auth, isAdmin, deleteExhibition); 
 
 
  
