@@ -198,5 +198,6 @@ export {
   getAllExhibitions, 
    getExhibitionsByArtist,
   getExhibitionById,
-  updateExhibition
+  updateExhibition,
+  deleteExhibition
 }
