@@ -1,5 +1,5 @@
 import express from 'express';
- import { createExibition , getAllExhibitions,  getExhibitionsByArtist, getExhibitionById, updateExhibition} from '../controllers/exhibition.controller.js';
+ import { createExibition , getAllExhibitions,  getExhibitionsByArtist, getExhibitionById, updateExhibition, deleteExhibition} from '../controllers/exhibition.controller.js';
  import { auth } from '../middleware/auth.js';
  import { isAdmin } from '../middleware/auth.js';
 
@@ -12,11 +12,11 @@ router.get('/all', getAllExhibitions);
 router.get('/exhibitions/artist/:artistId', getExhibitionsByArtist); 
 router.get("/exhibitions/:id", getExhibitionById);
 router.put("/exhibitions/:id", auth, updateExhibition);
+router.delete("/exhibitions/:id", auth, isAdmin, deleteExhibition); 
 
 
-// by artistId
-// router.get('/:id', getSingleExhibition);              // get one
-// router.put('/:id', auth, isAdmin, updateExhibition);  // update
+ 
+ 
 // router.delete('/:id', auth, isAdmin, deleteExhibition); // delete
 
 export default router;
