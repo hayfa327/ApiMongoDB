@@ -1,5 +1,4 @@
-
-
+ /* ===== RESET ===== */
 * {
   box-sizing: border-box;
 }
@@ -7,49 +6,17 @@
 html, body, #root {
   height: 100%;
   margin: 0;
-  font-family: "Helvetica Neue", sans-serif;
-}
- 
-
-.backHome {
-  display: inline-block;
-  margin-bottom: 20px;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
-  text-decoration: none;
-  position: relative;
-  transition: 0.3s;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.backHome::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 1px;
-  background: rgba(63, 15, 236, 0.6);
-  transition: width 0.3s ease;
-}
-
-.backHome:hover::after {
-  width: 100%;
-}
-
-.backHome:hover {
-  color: black;
-}
-
- 
-
+/* ===== PAGE ===== */
 .loginPage {
   display: flex;
-  min-height: 90vh;
+  min-height: 100vh;
   width: 100%;
 }
 
- 
-
+/* ===== LEFT IMAGE ===== */
 .loginImage {
   flex: 1;
   position: relative;
@@ -62,31 +29,7 @@ html, body, #root {
   object-fit: cover;
 }
 
- 
-
-.imageText {
-  position: absolute;
-  bottom: 60px;
-  left: 40px;
-  max-width: 400px;
-  color: white;
-}
-
-.imageText h1 {
-  font-size: 30px;
-  font-weight: 500;
-   
-  color: rgba(63, 15, 236, 0.8);
-}
-
-.imageText p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-}
-
- 
-
+/* OVERLAY */
 .loginImage::after {
   content: "";
   position: absolute;
@@ -94,47 +37,67 @@ html, body, #root {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0)
+    transparent
   );
 }
 
- 
+/* TEXT ON IMAGE */
+.imageText {
+  position: absolute;
+  bottom: 50px;
+  left: 40px;
+  max-width: 400px;
+  color: white;
+  z-index: 2;
+}
 
+.imageText h1 {
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(63, 15, 236, 0.9);
+}
+
+.imageText p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== RIGHT CONTENT ===== */
 .loginContent {
   flex: 1;
   display: flex;
-   justify-content: center;
-   align-items: start;
+  justify-content: center;
+  align-items: center;
   padding: 40px;
-  background: rgb(255, 255, 255);
-  margin-top: 10px;
+  background: white;
 }
 
+/* BOX */
 .loginBox {
   width: 100%;
-  max-width: 500px;
-   
-  padding: 50px 20px;
-  
+  max-width: 420px;
 }
 
- 
-
+/* TITLE */
 .loginBox h1 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 500;
-  width: 500px;
+  margin-bottom: 10px;
 }
 
+/* SUBTITLE */
 .subtitle {
   font-size: 14px;
   color: #777;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
+
+/* ===== INPUT ===== */
 .inputGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .inputGroup label {
@@ -144,7 +107,6 @@ html, body, #root {
 }
 
 .inputGroup input {
-  width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   font-size: 14px;
@@ -153,62 +115,87 @@ html, body, #root {
 
 .inputGroup input:focus {
   outline: none;
-  border-color: rgba(80, 18, 161, 0.678);
+  border-color: #5c2bd9;
 }
 
- 
-
+/* ===== BUTTONS ===== */
 .primaryBtn {
   width: 100%;
   padding: 14px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+
   background: black;
   color: white;
   border: none;
+
   font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
 
- 
+.primaryBtn:hover {
+  background: #333;
+}
 
+.primaryBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* SECONDARY */
 .secondaryBtn {
   display: block;
   width: 100%;
   padding: 14px;
+
   text-align: center;
   font-size: 14px;
+
   border: 1px solid #ddd;
   background: transparent;
   color: black;
+
   text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
 }
 
-  .primaryBtn:hover { background: #33333342; 
-  font-weight: 600; 
-  color: black; 
+.secondaryBtn:hover {
+  background: #f3f3f3;
 }
 
-.primaryBtn:disabled {
-  background: #33333342;
+/* ===== LINKS ===== */
+.links {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #666;
+}
+
+.links a {
   color: black;
-  cursor: not-allowed;
-  opacity: 0.6;
+  text-decoration: none;
+  font-weight: 500;
 }
- 
- 
 
-.secondaryBtn:hover { 
-  background: rgba(0, 0, 0, 0.068);
-   color: #353535; 
-   font-weight: 600; 
-  }
+.links a:hover {
+  color: #333;
+}
 
+/* ===== ERROR ===== */
+.errorMsg {
+  color: #d60000;
+  font-size: 14px;
+  margin-bottom: 15px;
 
+  padding: 10px;
+  border: 1px solid #f1bcbc;
+  background: #fff5f5;
 
+  text-align: center;
+}
+
+/* ===== DIVIDER ===== */
 .divider {
   display: flex;
   align-items: center;
@@ -229,91 +216,68 @@ html, body, #root {
   margin: 0 10px;
 }
 
- 
-
-.links {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #666;
-}
-
-.links a {
-  color: black;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.links a:hover {
-  color: #555;
-  font-weight: 700;
-}
-
-
-
-.accountLink {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.accountLink p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
- .errorMsg {
-  color: #fa0606;
-  font-size: 15px;
-  margin-bottom: 15px;
-  text-align: left;
-  border : 1px solid #fa060627;
-  padding: 9px;
-  background-color: #f0f0f0e7;
- text-align: center;
-}
-
- 
+/* ===== DEMO ===== */
 .demoLogin {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
- 
 .demoLogin button {
   background: transparent;
   border: 1px solid #ddd;
   padding: 10px;
   font-size: 13px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .demoLogin button:hover {
-  background: #f3f3f3;
+  background: #f5f5f5;
 }
 
+/* ===== BACK LINK ===== */
+.backHome {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+  position: relative;
+}
 
+.backHome::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: #5c2bd9;
+  transition: width 0.3s;
+}
 
+.backHome:hover::after {
+  width: 100%;
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .loginPage {
     flex-direction: column;
   }
 
   .loginImage {
-    height: 250px;
+    height: 220px;
   }
 
   .imageText {
-    bottom: 20px;
-    left: 20px;
-    max-width: 90%;
+    bottom: 15px;
+    left: 15px;
   }
 
   .imageText h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .imageText p {
@@ -327,10 +291,6 @@ html, body, #root {
   .loginBox {
     max-width: 100%;
   }
-
-  .primaryBtn,
-  .secondaryBtn {
-    padding: 12px;
-    font-size: 14px;
-  }
 }
+
+
