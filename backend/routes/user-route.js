@@ -14,9 +14,10 @@ router.route("/login").post(loginUser);
 router.route("/logout").post(logoutUser);
 router.put("/change-password", auth, changePassword)
 router.get("/all",  auth, isAdmin, getAllUsers); 
-router.get("/artists", getAllArtists); // public route to get all artists
+router.get("/artists", getAllArtists);
 router.post("/artists", auth, isAdmin, addArtist);
 router.patch("/make-admin/:id", auth, isAdmin, makeAdmin);
+
 
 
 export default router; 
