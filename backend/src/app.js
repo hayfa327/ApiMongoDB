@@ -34,6 +34,13 @@ app.use("/api/v1/exhibitions", exhibitionRouter);
 // route: https://mesum-api.onrender.com/api/v1/exhibitions/exhibitions/:id 
 // route:  https://mesum-api.onrender.com/api/v1/exhibitions/:id
 
- 
+app.use("/api/v1/performances", performanceRouter);
+
+// route: https://mesum-api.onrender.com/api/v1/performances/create
+// route: https://mesum-api.onrender.com/api/v1/performances/all
+// route: https://mesum-api.onrender.com/api/v1/performances/performances/artist/:artistId
+// route: https://mesum-api.onrender.com/api/v1/performances/performances/:id
+// route: https://mesum-api.onrender.com/api/v1/performances/performances/:id
+// route: https://mesum-api.onrender.com/api/v1/performances/:id
 
 export default app; 
