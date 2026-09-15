@@ -21,12 +21,17 @@ const performanceSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    // Link to the video (streaming or recorded playback) for this performance
+    videoUrl: {
+      type: String,
+    },
     artist: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    // A second, optional collaborator — e.g. "Mira Nordin & Salma Harb"
+    // Optional second collaborator — remove this field entirely if you'd
+    // rather keep Performance strictly one-artist, matching Exhibition.
     coArtist: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -46,7 +51,5 @@ const performanceSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-const Performance = mongoose.model('Performance', performanceSchema);
-
-export default Performance;
+ 
+export const Performance = mongoose.model('Performance', performanceSchema);
