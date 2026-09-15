@@ -148,7 +148,7 @@ const getAllArtists = async (req, res) => {
 
  const addArtist = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+  const { username, email, password, location, discipline, profileImage } = req.body;
 
     if (req.user.role !== "admin") {
       return res.status(403).json({ message: "Access denied" });
@@ -166,6 +166,9 @@ const getAllArtists = async (req, res) => {
       email,
       password,
       role: "artist",  
+       location,
+      discipline,
+      profileImage,
     });
 
     res.status(201).json({
