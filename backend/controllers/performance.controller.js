@@ -1,5 +1,6 @@
 // controllers/performanceController.js
-import Performance from '../models/Performance.js';
+import Performance from '../models/performance.model.js';
+import { User } from "../models/user.model.js";
 
 const createPerformance = async (req, res) => {
   try {

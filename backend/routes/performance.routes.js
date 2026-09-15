@@ -6,7 +6,7 @@ import {
   getPerformanceById,
   updatePerformance,
   deletePerformance,
-} from '../controllers/performanceController.js';
+} from '../controllers/performance.controller.js';
  
 const router = express.Router();
  
