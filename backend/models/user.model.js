@@ -31,6 +31,20 @@ role: {
   enum: ["visitor", "artist", "admin"],
   default: "visitor"
 },
+location: {
+  type: String,
+  trim: true,
+  default: '',
+},
+discipline: {
+  type: String,
+  trim: true,
+  default: '',
+},
+profileImage: {
+  type: String,
+  default: '',
+},
   },
   {
   timestamps : true
