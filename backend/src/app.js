@@ -11,6 +11,7 @@ app.use(express.json());
 //import routes
 import userRouter from "../routes/user-route.js";
 import exhibitionRouter from "../routes/exhibition-route.js";
+import performanceRouter from "../routes/performance.routes.js";
 
 //route declaration
 app.use("/api/v1/users", userRouter); 

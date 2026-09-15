@@ -1,20 +1,21 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/auth');
-const isAdmin = require('../middleware/isAdmin');
-const {
+import express from 'express';
+import { auth, isAdmin } from '../middleware/auth.js';
+import {
   createPerformance,
   getAllPerformances,
   getPerformanceById,
   updatePerformance,
   deletePerformance,
-} = require('../controllers/performanceController');
+} from '../controllers/performanceController.js';
+ 
+const router = express.Router();
  
 router.post('/create', auth, isAdmin, createPerformance);
 router.get('/all', getAllPerformances); // supports ?type=performance or ?type=concert
+router.get('/artist/:artistId', getAllPerformances);
 router.get('/:id', getPerformanceById);
 router.put('/:id', auth, updatePerformance);
 router.delete('/:id', auth, isAdmin, deletePerformance);
  
-module.exports = router;
+export default router;
  

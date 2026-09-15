@@ -1,5 +1,5 @@
 // controllers/performanceController.js
-const Performance = require('../models/Performance');
+import Performance from '../models/Performance.js';
 
 const createPerformance = async (req, res) => {
   try {
@@ -96,7 +96,7 @@ const deletePerformance = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   createPerformance,
   getAllPerformances,
   getPerformanceById,
