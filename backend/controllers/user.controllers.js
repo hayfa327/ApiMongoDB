@@ -134,7 +134,7 @@ const getAllArtists = async (req, res) => {
   try {
     const artists = await User.find({
       role: { $regex: "^artist$", $options: "i" } 
-    }).select("_id username email role");
+    }).select("_id username email role location discipline profileImage");
 
     res.status(200).json({ artists });
 
