@@ -33,9 +33,14 @@
   },
   artworks: [
   {
-    image: String,
-    title: String
-  }
+       image: { type: String, required: true },
+    title: { type: String },
+    wall: {
+      type: String,
+      enum: ['wallOne', 'wallTwo', 'wallThree'],
+      default: 'wallOne',
+    },
+  },
 ]
 },
   
