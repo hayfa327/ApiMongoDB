@@ -31,7 +31,11 @@
     type: String,
     default: "",
   },
-   artworks: [
+ // In exhibition.model.js — inside exhibitionSchema, alongside the
+// existing "artworks" array, add a new "wallSettings" field.
+// Each of the 3 walls gets its own color, content mode, and optional text.
+
+  artworks: [
     {
       image: { type: String, required: true },
       title: { type: String },
@@ -42,7 +46,7 @@
       },
     },
   ],
- 
+
   wallSettings: {
     type: [
       {
@@ -67,6 +71,11 @@
       { wallId: 'wallThree', color: '#1B2740', contentType: 'artOnly', wallText: '', maxArtworks: 6 },
     ]),
   },
+
+// No controller changes needed if createExhibition / updateExhibition
+// already pass req.body straight into Exhibition.create() / findByIdAndUpdate()
+// — "wallSettings" will flow through exactly like "artworks" already does.
+},
   
 { timestamps: true }
 );
