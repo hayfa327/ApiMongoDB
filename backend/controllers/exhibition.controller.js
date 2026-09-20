@@ -96,8 +96,7 @@ const getExhibitionById = async (req, res) => {
   }
 };
 
-
-const updateExhibition = async (req, res) => {
+ const updateExhibition = async (req, res) => {
   try {
     const exhibition = await Exhibition.findById(req.params.id);
 
@@ -117,7 +116,7 @@ const updateExhibition = async (req, res) => {
         ? exhibition.artist._id.toString()
         : exhibition.artist.toString();
 
-      isOwner = artistId === user.id.toString(); // ✅ IMPORTANT FIX
+      isOwner = artistId === user.id.toString();
     }
 
     if (!isAdmin && !isOwner) {
@@ -133,7 +132,10 @@ const updateExhibition = async (req, res) => {
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       image: req.body.image,
-      artworks: req.body.artworks
+      artworks: req.body.artworks,
+      wallSettings: req.body.wallSettings, // <-- this line was missing —
+      // wall colors/text/content-type were being silently dropped on every
+      // save, which is why edits never showed up in the 3D gallery.
     };
 
     // ONLY ADMIN CAN CHANGE ARTIST
