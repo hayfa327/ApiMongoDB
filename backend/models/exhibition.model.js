@@ -47,6 +47,9 @@
     },
   ],
 
+// In exhibition.model.js — add these two fields inside each wallSettings
+// sub-object, alongside color/contentType/wallText/maxArtworks:
+
   wallSettings: {
     type: [
       {
@@ -55,20 +58,32 @@
           enum: ['wallOne', 'wallTwo', 'wallThree'],
           required: true,
         },
-        color: { type: String, default: '#4A1F24' }, // hex color, chosen in the admin form
+        color: { type: String, default: '#F2EFE7' },
         contentType: {
           type: String,
           enum: ['artOnly', 'textOnly', 'both'],
           default: 'artOnly',
         },
-        wallText: { type: String, default: '' }, // shown on the wall if contentType is textOnly/both
-        maxArtworks: { type: Number, default: 6 }, // caps how many pieces this wall can hold
+        wallText: { type: String, default: '' },
+        maxArtworks: { type: Number, default: 6 },
+
+        // NEW — where on the wall the text panel sits, and how big it reads
+        textPosition: {
+          type: String,
+          enum: ['top', 'center', 'bottom'],
+          default: 'top',
+        },
+        textSize: {
+          type: String,
+          enum: ['small', 'medium', 'large'],
+          default: 'medium',
+        },
       },
     ],
     default: () => ([
-      { wallId: 'wallOne', color: '#4A1F24', contentType: 'both', wallText: '', maxArtworks: 4 },
-      { wallId: 'wallTwo', color: '#1F3D33', contentType: 'artOnly', wallText: '', maxArtworks: 6 },
-      { wallId: 'wallThree', color: '#1B2740', contentType: 'artOnly', wallText: '', maxArtworks: 6 },
+      { wallId: 'wallOne', color: '#F2EFE7', contentType: 'both', wallText: '', maxArtworks: 4, textPosition: 'top', textSize: 'medium' },
+      { wallId: 'wallTwo', color: '#EDEAE1', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
+      { wallId: 'wallThree', color: '#2B2A28', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
     ]),
   },
 
