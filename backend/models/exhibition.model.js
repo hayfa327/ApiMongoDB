@@ -31,33 +31,22 @@
     type: String,
     default: "",
   },
- // In exhibition.model.js — inside exhibitionSchema, alongside the
-// existing "artworks" array, add a new "wallSettings" field.
-// Each of the 3 walls gets its own color, content mode, and optional text.
+// In exhibition.model.js — replace the wallSettings field entirely.
+// wallId is now a free string ("wall-1", "wall-2", ...) instead of a
+// fixed enum, so admins can add as many walls as they want.
 
   artworks: [
     {
       image: { type: String, required: true },
       title: { type: String },
-      wall: {
-        type: String,
-        enum: ['wallOne', 'wallTwo', 'wallThree'],
-        default: 'wallOne',
-      },
+      wallId: { type: String, default: 'wall-1' }, // renamed from "wall" — matches a wallSettings entry's id
     },
   ],
-
-// In exhibition.model.js — add these two fields inside each wallSettings
-// sub-object, alongside color/contentType/wallText/maxArtworks:
 
   wallSettings: {
     type: [
       {
-        wallId: {
-          type: String,
-          enum: ['wallOne', 'wallTwo', 'wallThree'],
-          required: true,
-        },
+        id: { type: String, required: true }, // e.g. "wall-1", "wall-2" — admin-assigned, not a fixed enum
         color: { type: String, default: '#F2EFE7' },
         contentType: {
           type: String,
@@ -66,8 +55,6 @@
         },
         wallText: { type: String, default: '' },
         maxArtworks: { type: Number, default: 6 },
-
-        // NEW — where on the wall the text panel sits, and how big it reads
         textPosition: {
           type: String,
           enum: ['top', 'center', 'bottom'],
@@ -81,15 +68,16 @@
       },
     ],
     default: () => ([
-      { wallId: 'wallOne', color: '#F2EFE7', contentType: 'both', wallText: '', maxArtworks: 4, textPosition: 'top', textSize: 'medium' },
-      { wallId: 'wallTwo', color: '#EDEAE1', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
-      { wallId: 'wallThree', color: '#2B2A28', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
+      { id: 'wall-1', color: '#F2EFE7', contentType: 'both', wallText: '', maxArtworks: 4, textPosition: 'top', textSize: 'medium' },
+      { id: 'wall-2', color: '#EDEAE1', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
+      { id: 'wall-3', color: '#2B2A28', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
     ]),
   },
 
-// No controller changes needed if createExhibition / updateExhibition
-// already pass req.body straight into Exhibition.create() / findByIdAndUpdate()
-// — "wallSettings" will flow through exactly like "artworks" already does.
+// No controller changes needed beyond what's already there — updateData
+// already forwards wallSettings and artworks as-is, and this is just a
+// shape change within those same fields.
+
 },
   
 { timestamps: true }
