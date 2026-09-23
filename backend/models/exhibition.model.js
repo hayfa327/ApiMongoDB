@@ -43,10 +43,14 @@
     },
   ],
 
+// In exhibition.model.js — inside each wallSettings entry, replace the
+// old textSize enum with a precise number, and add textFont as a choice
+// from a curated list.
+
   wallSettings: {
     type: [
       {
-        id: { type: String, required: true }, // e.g. "wall-1", "wall-2" — admin-assigned, not a fixed enum
+        id: { type: String, required: true },
         color: { type: String, default: '#F2EFE7' },
         contentType: {
           type: String,
@@ -60,23 +64,24 @@
           enum: ['top', 'center', 'bottom'],
           default: 'top',
         },
-        textSize: {
+        // Was an enum (small/medium/large) — now the admin types an exact
+        // size directly, same idea as a font-size field in a design tool.
+        textSize: { type: Number, default: 24, min: 8, max: 72 },
+        // Which typeface the wall's text uses — a short curated list so
+        // every choice is guaranteed to render correctly in the 3D scene.
+        textFont: {
           type: String,
-          enum: ['small', 'medium', 'large'],
-          default: 'medium',
+          enum: ['inter', 'playfair', 'merriweather', 'mono'],
+          default: 'inter',
         },
       },
     ],
     default: () => ([
-      { id: 'wall-1', color: '#F2EFE7', contentType: 'both', wallText: '', maxArtworks: 4, textPosition: 'top', textSize: 'medium' },
-      { id: 'wall-2', color: '#EDEAE1', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
-      { id: 'wall-3', color: '#2B2A28', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 'medium' },
+      { id: 'wall-1', color: '#F2EFE7', contentType: 'both', wallText: '', maxArtworks: 4, textPosition: 'top', textSize: 24, textFont: 'inter' },
+      { id: 'wall-2', color: '#EDEAE1', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 24, textFont: 'inter' },
+      { id: 'wall-3', color: '#2B2A28', contentType: 'artOnly', wallText: '', maxArtworks: 6, textPosition: 'top', textSize: 24, textFont: 'inter' },
     ]),
   },
-
-// No controller changes needed beyond what's already there — updateData
-// already forwards wallSettings and artworks as-is, and this is just a
-// shape change within those same fields.
 
 },
   
