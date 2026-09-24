@@ -5,7 +5,7 @@ import { User } from "../models/user.model.js";
 const createExibition = async (req , res) => {
   try {
 
-const {title, description, startDate, endDate ,artistId,  image, artworks} = req.body;
+const {title, description, startDate, endDate ,artistId,  image, artworks, rooms} = req.body;
  
 const artist = await User.findById(artistId)
 if   (!artist || artist.role?.trim().toLowerCase() !== "artist") {
@@ -19,7 +19,8 @@ const exhibition = await Exhibition.create({
   endDate, 
   artist: artistId, 
   image,
-  artworks
+  artworks,
+  rooms,
 });
 
 res.status(201).json({message: "Exhibition created successfully", exhibition});
@@ -133,7 +134,7 @@ const getExhibitionById = async (req, res) => {
       endDate: req.body.endDate,
       image: req.body.image,
       artworks: req.body.artworks,
-      wallSettings: req.body.wallSettings, // <-- this line was missing —
+      rooms: req.body.rooms, // <-- this line was missing —
       // wall colors/text/content-type were being silently dropped on every
       // save, which is why edits never showed up in the 3D gallery.
     };
